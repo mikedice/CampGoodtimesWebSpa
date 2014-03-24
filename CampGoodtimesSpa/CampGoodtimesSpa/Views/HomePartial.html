@@ -1,0 +1,23 @@
+﻿<!-- This is the partial view for home page -->
+<div id="page-body">
+    <img id="home-image" src="/Content/images/layout/banner-placeholder1.png" alt="home banner image" />
+    <div id="home-buttonbar">
+        <ul>
+            <li><a ng-click="donateClicked()">Donate!</a></li>
+            <li><a ng-click="becomeACamperClicked()">Become a Camper!</a></li>
+            <li><a ng-click="becomeAVolunteerClicked()">Volunteer!</a></li>
+        </ul>
+    </div>
+
+    <div id="home-news-articles-container" >
+        <ul>
+            <li ng-repeat="newsItem in newsItems">{{newsItem.name}}</li>
+        </ul>
+    </div>
+
+    <div id="home-sponsors-container">
+        <div id="caption">We <span id="home-heart">&hearts;</span> Our Sponsors</div>
+        <div id="imagebar"><img src="/Content/images/layout/donor-banner1.png" alt="" /></div>
+    </div>
+</div>
+

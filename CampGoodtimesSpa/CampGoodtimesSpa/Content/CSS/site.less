@@ -1,0 +1,129 @@
+﻿@import "constants.less";
+
+.BodyFont
+{
+    font-family: @defaultFontFamily;
+    font-style: @defaultFontStyle;
+    font-weight: @defaultFontWeight;
+    font-size: @defaultFontSize;
+    color: @textNotBoldColor;
+}
+
+.HeadingFonts(@fontSize)
+{
+    font-family: @defaultFontFamily;
+    font-weight: @boldFontWeight;
+    font-style: @defaultFontStyle;
+    font-size: @fontSize;
+    color: @boldFontColor;
+}
+
+/* Some default elements */
+h1
+{
+    .HeadingFonts(36px);
+}
+
+h2
+{
+    .HeadingFonts(27px);
+}
+
+h3
+{
+    .HeadingFonts(22px);
+}
+
+body
+{
+    .BodyFont;
+    margin:0;
+}
+
+#content-container{
+    position:relative;
+    top:-70px;
+}
+#page-body{
+    width: 1280px;
+    margin: auto;
+}
+
+.ButtonBarNavLinks
+{
+    font-weight: @boldFontWeight;
+    font-size: 18pt;
+    color: #fff;
+}
+
+#home-image{
+    display:block;
+}
+
+#home-heart{
+    color:red;
+    font-size: 150%;
+}
+#home-sponsors-container
+{
+    height: 200px;
+    color: white;
+    text-align: center;
+    background-color: @colorThirdPrimary;
+    #caption
+    {
+        line-height:100px;
+    }
+    #sponsorbar
+    {
+        line-height:100px;
+    }
+}
+
+#home-buttonbar
+{
+    background-color: @grayHeaderBanner;
+    text-align:center;
+    height: 70px;
+    position: relative;
+    top:-70px;
+    z-index: 100;
+    opacity: .65;
+    -moz-opacity: .65;
+
+    ul
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: inline;
+
+        li
+        {
+            display:inline;
+            line-height: 70px;
+            vertical-align: middle;
+           a
+            {
+                .ButtonBarNavLinks;
+                display: inline;
+                text-decoration: none;
+                padding-left: 20px;
+                padding-right: 20px;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                padding-top: 4px;
+                padding-bottom: 5px;
+            }
+
+                a:hover
+                {
+                    background-color: @grayLight;
+                    -moz-opacity: .9;
+                    opacity: .9;
+                }
+        }
+    }
+
+}

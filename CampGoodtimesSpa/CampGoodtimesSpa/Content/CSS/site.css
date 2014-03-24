@@ -1,0 +1,115 @@
+﻿/*Font defaults*/
+/* Font colors */
+/* Grays */
+/* General Colors */
+/* Link Colors */
+.BodyFont {
+  font-family: "proxima-nova";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  color: #a6b1cc;
+}
+/* Some default elements */
+h1 {
+  font-family: "proxima-nova";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 36px;
+  color: #474b59;
+}
+h2 {
+  font-family: "proxima-nova";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 27px;
+  color: #474b59;
+}
+h3 {
+  font-family: "proxima-nova";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px;
+  color: #474b59;
+}
+body {
+  font-family: "proxima-nova";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  color: #a6b1cc;
+  margin: 0;
+}
+#content-container {
+  position: relative;
+  top: -70px;
+}
+#page-body {
+  width: 1280px;
+  margin: auto;
+}
+.ButtonBarNavLinks {
+  font-weight: 700;
+  font-size: 18pt;
+  color: #fff;
+}
+#home-image {
+  display: block;
+}
+#home-heart {
+  color: red;
+  font-size: 150%;
+}
+#home-sponsors-container {
+  height: 200px;
+  color: white;
+  text-align: center;
+  background-color: #ffc91d;
+}
+#home-sponsors-container #caption {
+  line-height: 100px;
+}
+#home-sponsors-container #sponsorbar {
+  line-height: 100px;
+}
+#home-buttonbar {
+  background-color: #adbcbc;
+  text-align: center;
+  height: 70px;
+  position: relative;
+  top: -70px;
+  z-index: 100;
+  opacity: .65;
+  -moz-opacity: .65;
+}
+#home-buttonbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+#home-buttonbar ul li {
+  display: inline;
+  line-height: 70px;
+  vertical-align: middle;
+}
+#home-buttonbar ul li a {
+  font-weight: 700;
+  font-size: 18pt;
+  color: #fff;
+  display: inline;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+}
+#home-buttonbar ul li a:hover {
+  background-color: #eaeff9;
+  -moz-opacity: .9;
+  opacity: .9;
+}
+/*# sourceMappingURL=site.css.map */

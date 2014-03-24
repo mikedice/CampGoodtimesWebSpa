@@ -1,0 +1,103 @@
+﻿@import "constants.less";
+
+/*
+    Prototype at: http://jsfiddle.net/GEy7j/1/
+*/
+
+.HeaderNavLinks
+{
+    font-weight: @boldFontWeight;
+    font-size: 18pt;
+    color: #FFF;
+}
+
+.page-header-row
+{
+    display: table-row;
+}
+
+.page-header-cell
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#left-col
+{
+    text-align: left;
+    padding-left: 40px;
+}
+
+#right-col
+{
+    text-align: right;
+    padding-right: 40px;
+}
+
+#page-header
+{
+    background-color: @grayHeaderBanner;
+    position: relative;
+    top: 70px;
+    width: 1280px;
+    height: 70px;
+    z-index: 100;
+    margin: auto;
+    -moz-opacity: .65;
+    opacity: .65;
+    display: table;
+
+
+    /* The Good Times PRoject link left side of banner*/
+    a#goodtimes-link
+    {
+        display: inline;
+        text-decoration: none;
+        img
+        {
+
+            border:0;
+        }
+    }
+
+    /* Nav links on right side of banner*/
+    ul
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: inline;
+
+
+        li
+        {
+            display: inline;
+
+            a
+            {
+                .HeaderNavLinks;
+                display: inline;
+                text-decoration: none;
+                padding-left: 20px;
+                padding-right: 20px;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                padding-top: 4px;
+                padding-bottom: 5px;
+            }
+
+                a.noDonate:hover
+                {
+                    background-color: @grayLight;
+                    -moz-opacity: .9;
+                    opacity: .9;
+                }
+
+                a.donate
+                {
+                    background-color: @colorThirdPrimary;
+                }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html ng-app="GoodtimesApp">
+<head>
+    <title>Camp Goodtimes</title>
+    <link href="/Content/CSS/constants.css" rel="stylesheet" />
+    <link href="/Content/CSS/pageheader.css" rel="stylesheet" />
+    <link href="/Content/CSS/pagefooter.css" rel="stylesheet" />
+    <link href="/Content/CSS/site.css" rel="stylesheet" />
+    <link href="/Content/CSS/angular.css" rel="stylesheet" />
+    <script type="text/javascript" src="//use.typekit.net/ooz7jur.js"></script>
+    <script type="text/javascript">try { Typekit.load(); } catch (e) { alert(e); }</script>
+</head>
+<body>
+    <div id="content-container">
+        <div id="page-header">
+            <div class="page-header-row">
+                <div id="left-col" class="page-header-cell">
+                    <a id="goodtimes-link" href="#">
+                        <img src="/Content/images/layout/goodtimes_logo_white_small.png" />
+                    </a>
+                </div>
+                <div id="right-col" class="page-header-cell">
+                    <ul>
+                        <li><a class='noDonate' href="#">WHO WE ARE</a></li>
+                        <li><a class='noDonate' href="#">WHAT WE DO</a></li>
+                        <li><a class='noDonate' href="#">NEWS</a></li>
+                        <li><a class='noDonate' href="#">CONECT</a></li>
+                        <li><a class='donate' href="#">DONATE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- The container for the ng-view -->
+        <div class="view-container">
+            <div ng-view class="reveal-animation"></div>
+        </div>
+
+
+        <div id="footer-container">
+            <div id="footer-sociallinks">
+                <span>social links placeholder</span>
+            </div>
+            <div id="footer-signature"><span>Designer-Jacob Greif, Developer-Mike Dice</span></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="Scripts/angular.js"></script>
+    <script type="text/javascript" src="Scripts/angular-route.js"></script>
+    <script type="text/javascript" src="Scripts/angular-animate.js"></script>
+    <script type="text/javascript" src="Scripts/app.js"></script>
+</body>
+
+</html>

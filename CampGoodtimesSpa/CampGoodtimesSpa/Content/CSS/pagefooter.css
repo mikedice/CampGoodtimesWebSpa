@@ -1,0 +1,28 @@
+﻿/*Font defaults*/
+/* Font colors */
+/* Grays */
+/* General Colors */
+/* Link Colors */
+#footer-container {
+  margin-top: 120px;
+  width: 1280px;
+  margin: auto;
+}
+#footer-container span {
+  display: block;
+  margin: auto;
+  width: 500px;
+  text-align: center;
+  vertical-align: middle;
+}
+#footer-sociallinks {
+  height: 120px;
+  line-height: 120px;
+  background-color: #474b59;
+}
+#footer-signature {
+  height: 30px;
+  line-height: 30px;
+  background-color: #3c3f4a;
+}
+/*# sourceMappingURL=pagefooter.css.map */
