@@ -9,9 +9,13 @@
         </ul>
     </div>
 
+    <div id="loading-indicator" ng-show="!newsItemsLoaded">
+        <span>Loading...</span>
+    </div>
+
     <div id="home-news-articles-container" >
         <ul>
-            <li ng-repeat="newsItem in newsItems">{{newsItem.name}}</li>
+            <li ng-repeat="newsItem in newsItems">{{newsItem.Title}}</li>
         </ul>
     </div>
 

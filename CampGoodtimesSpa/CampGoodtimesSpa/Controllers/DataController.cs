@@ -1,21 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using CampGoodtimesSpa.Services;
+using CampGoodtimesSpa.Models.Sharepoint.Feeds;
 namespace CampGoodtimesSpa.Controllers
 {
     public class DataController : ApiController
     {
-        [HttpGet]
-        public IEnumerable<object> NewsItems()
+        ISharepointService sharepointService;
+
+        public DataController(ISharepointService sharepointService)
         {
-            return new object[] { 
-                new {name="object 1", city="Redmond"},
-                new {name="object 2", city="Seattle"}
-            };
+            this.sharepointService = sharepointService;
+        }
+
+        [HttpGet]
+        public Task<IEnumerable<NewsFromTheDirectorElement>> NewsItems()
+        {
+            string url = ConfigurationManager.AppSettings["CampDirectorNewsItemsRssFeed"];
+            return sharepointService.GetDirectorNewsFeedAsync(url);
         }
 
         //// GET api/api/5

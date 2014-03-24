@@ -16,7 +16,7 @@ namespace CampGoodtimesSpa
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            ServiceConfig.RegisterServices(GlobalConfiguration.Configuration);
         }
     }
 }
