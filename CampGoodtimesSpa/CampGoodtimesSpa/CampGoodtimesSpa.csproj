@@ -161,11 +161,14 @@
     <Content Include="Content\images\layout\goodtimes-loading.gif" />
     <Content Include="Content\images\layout\goodtimes_logo_white_small.png" />
     <Content Include="Global.asax" />
-    <Content Include="Home.html" />
+    <Content Include="Index.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\Controllers\HomeViewController.js" />
+    <Content Include="Scripts\Controllers\PageHeaderController.js" />
+    <Content Include="Scripts\Factories\NewsItemFactory.js" />
     <Content Include="Views\HomePartial.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
