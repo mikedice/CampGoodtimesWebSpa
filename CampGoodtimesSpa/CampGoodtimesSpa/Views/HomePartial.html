@@ -3,20 +3,36 @@
     <img id="home-image" src="/Content/images/layout/banner-placeholder1.png" alt="home banner image" />
     <div id="home-buttonbar">
         <ul>
-            <li><a ng-click="donateClicked()">Donate!</a></li>
-            <li><a ng-click="becomeACamperClicked()">Become a Camper!</a></li>
-            <li><a ng-click="becomeAVolunteerClicked()">Volunteer!</a></li>
+            <li><a href="" ng-click="donateClicked()">Donate!</a></li>
+            <li><a href="" ng-click="becomeACamperClicked()">Become a Camper!</a></li>
+            <li><a href="" ng-click="becomeAVolunteerClicked()">Volunteer!</a></li>
         </ul>
     </div>
 
-    <div id="loading-indicator" ng-show="!newsItemsLoaded">
-        <span>Loading...</span>
+    <div class="news-title-container">
+        <p class="news-title-paragraph">
+            <span class="news-bullet-left">&#9679;</span>
+            <span class="news-heading">Some Good News</span>
+            <span class="news-bullet-right">&#9679;</span>
+        </p>
+    </div>
+    <div class="news-loading-indicator" ng-show="!newsItemsLoaded">
+        <img src="/Content/images/layout/goodtimes-loading.gif" alt="" />
+        <span>Loading News...</span>
     </div>
 
-    <div id="home-news-articles-container" >
-        <ul>
-            <li ng-repeat="newsItem in newsItems">{{newsItem.Title}}</li>
-        </ul>
+    <div id="home-news-articles-container">
+        <div class="news-row">
+            <div class="news-cell" ng-repeat="newsItem in newsItems"><img src="{{newsItem.EventImageUrl}}"></div>
+        </div>
+
+        <div class="news-row">
+            <div class="news-cell" ng-repeat="newsItem in newsItems"><h3 class="news-title">{{newsItem.Title}}</h3></div>
+        </div>
+
+        <div class="news-row">
+            <div class="news-cell" ng-repeat="newsItem in newsItems"><p class="news-description">{{newsItem.Description}}</p></div>
+        </div>
     </div>
 
     <div id="home-sponsors-container">

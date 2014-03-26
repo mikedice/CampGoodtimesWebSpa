@@ -153,6 +153,13 @@
     <Content Include="Content\CSS\site.css">
       <DependentUpon>site.less</DependentUpon>
     </Content>
+    <Content Include="Content\images\layout\banner-placeholder1.png" />
+    <Content Include="Content\images\layout\banner-placeholder2.png" />
+    <Content Include="Content\images\layout\banner-placeholder3.png" />
+    <Content Include="Content\images\layout\defaultnewsitem.png" />
+    <Content Include="Content\images\layout\donor-banner1.png" />
+    <Content Include="Content\images\layout\goodtimes-loading.gif" />
+    <Content Include="Content\images\layout\goodtimes_logo_white_small.png" />
     <Content Include="Global.asax" />
     <Content Include="Home.html" />
     <Content Include="Scripts\angular-animate.js" />
@@ -169,7 +176,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\images\layout\" />
+    <None Include="Properties\PublishProfiles\CampGoodtimesSeattle.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\CSS\constants.less" />
