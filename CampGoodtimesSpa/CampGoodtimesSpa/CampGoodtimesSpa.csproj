@@ -162,14 +162,19 @@
     <Content Include="Content\images\layout\goodtimes_logo_white_small.png" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="PartialViews\Who\Donors.html" />
+    <Content Include="PartialViews\Who\History.html" />
+    <Content Include="PartialViews\Who\Staff.html" />
+    <Content Include="PartialViews\Who\Volunteers.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\Controllers\HomeViewController.js" />
     <Content Include="Scripts\Controllers\PageHeaderController.js" />
+    <Content Include="Scripts\Controllers\WhoController.js" />
     <Content Include="Scripts\Factories\NewsItemFactory.js" />
-    <Content Include="Views\HomePartial.html" />
+    <Content Include="PartialViews\Home.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

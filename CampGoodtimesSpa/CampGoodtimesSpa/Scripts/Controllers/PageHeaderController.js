@@ -7,7 +7,7 @@
 var PageHeaderController = (function () {
 
     // Initialization
-    function init(scope) {
+    function init(scope, location) {
         // Click handlers for UI elements
         scope.donateClicked = function () {
             window.alert("page header: donate!");
@@ -26,14 +26,14 @@ var PageHeaderController = (function () {
         };
 
         scope.whoWeAreClicked = function () {
-            window.alert("page header: who we are!");
+            location.path("/who");
         };
     }
 
     return {
         Name: 'PageHeaderController',
-        Controller: function ($scope) {
-            init($scope);
+        Controller: function ($scope, $location) {
+            init($scope, $location);
         }
     };
 

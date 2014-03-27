@@ -113,6 +113,71 @@ body {
   -moz-opacity: .9;
   opacity: .9;
 }
+#who-buttonbar {
+  background-color: #adbcbc;
+  text-align: center;
+  height: 70px;
+  position: relative;
+  top: -70px;
+  z-index: 100;
+  opacity: .65;
+  -moz-opacity: .65;
+}
+#who-buttonbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+#who-buttonbar ul li {
+  display: inline-block;
+  margin-top: 25px;
+  vertical-align: bottom;
+}
+#who-buttonbar ul li .nav-a {
+  font-weight: 700;
+  font-size: 18pt;
+  color: #fff;
+  display: inline;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+}
+#who-buttonbar ul li .nav-a-selected {
+  font-weight: 700;
+  color: #474b59;
+  font-size: 18pt;
+  background-color: #eaeff9;
+  display: inline;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+}
+#who-buttonbar ul li a:hover {
+  background-color: #eaeff9;
+  -moz-opacity: .9;
+  opacity: .9;
+}
+#who-buttonbar ul li .nav-tab-hidden {
+  background-color: #eaeff9;
+  height: 17px;
+  visibility: hidden;
+}
+#who-buttonbar ul li .nav-tab-visible {
+  background-color: #eaeff9;
+  height: 17px;
+  visibility: visible;
+}
 #home-news-articles-container {
   display: table;
   width: 80%;
