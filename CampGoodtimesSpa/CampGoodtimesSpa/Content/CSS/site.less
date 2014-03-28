@@ -178,7 +178,7 @@ body
                 -webkit-border-radius: 3px;
                 border-radius: 3px;
                 padding-top: 4px;
-                padding-bottom: 5px;
+                padding-bottom: 18px;
             }
 
             .nav-a-selected
@@ -195,7 +195,7 @@ body
                 -webkit-border-radius: 3px;
                 border-radius: 3px;
                 padding-top: 4px;
-                padding-bottom: 5px;
+                padding-bottom: 18px;
             }
 
             a:hover
@@ -204,21 +204,6 @@ body
                 -moz-opacity: .9;
                 opacity: .9;
             }
-            
-            .nav-tab-hidden
-            {
-                background-color: @grayLight;
-                height:17px;
-                visibility: hidden;
-            }
-
-            .nav-tab-visible
-            {
-                background-color: @grayLight;
-                height:17px;
-                visibility: visible;
-            }
-
         }
     }
 
@@ -332,5 +317,24 @@ body
     img{
         position:relative;
         top:15px;
+    }
+}
+
+#donors-table {
+    width: 80%;
+    margin: auto;
+    border-collapse:collapse;
+
+    tr {
+        vertical-align: top;
+    }
+
+    td {
+        width:50%;
+        padding:5px;
+    }
+
+    tr:nth-child(odd) {
+        background-color: @grayLight;
     }
 }
