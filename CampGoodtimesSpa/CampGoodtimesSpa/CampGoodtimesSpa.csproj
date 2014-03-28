@@ -166,6 +166,7 @@
     <Content Include="PartialViews\Who\History.html" />
     <Content Include="PartialViews\Who\Staff.html" />
     <Content Include="PartialViews\Who\Volunteers.html" />
+    <Content Include="PartialViews\Who\WhoButtonBar.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular.js" />

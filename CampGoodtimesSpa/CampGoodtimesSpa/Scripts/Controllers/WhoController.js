@@ -35,26 +35,27 @@ var WhoController = (function () {
     // we set the visible tab after navigation completes. That way
     // the tab gets set correctly whether the user navigates using the
     // back/fwd buttons or by clicking on nav links in the UI.
+    // TODO: this got ugly. Find a better way to implement tabs that can handle navigation and F5
     function setVisibleTab(loc) {
-        if (endsWith(loc, "/who/history")) {
+        if (endsWith(loc, "/who/history") || endsWith(loc, '/PartialViews/Who/History.html')) {
             visibleTab0 = { a: 'nav-a-selected', d: 'nav-tab-visible' };
             visibleTab1 = { a: 'nav-a', d: 'nav-tab-hidden' };
             visibleTab2 = { a: 'nav-a', d: 'nav-tab-hidden' };
             visibleTab3 = { a: 'nav-a', d: 'nav-tab-hidden' };
         }
-        else if (endsWith(loc, "/who/staff")) {
+        else if (endsWith(loc, "/who/staff") || endsWith(loc, '/PartialViews/Who/Staff.html')) {
             visibleTab0 = { a: 'nav-a', d: 'nav-tab-hidden' };
             visibleTab1 = { a: 'nav-a-selected', d: 'nav-tab-visible' };
             visibleTab2 = { a: 'nav-a', d: 'nav-tab-hidden' };
             visibleTab3 = { a: 'nav-a', d: 'nav-tab-hidden' };
         }
-        else if (endsWith(loc, "/who/volunteers")) {
+        else if (endsWith(loc, "/who/volunteers") || endsWith(loc, '/PartialViews/Who/Volunteers.html')) {
             visibleTab0 = { a: 'nav-a', d: 'nav-tab-hidden' };
             visibleTab1 = { a: 'nav-a', d: 'nav-tab-hidden' };
             visibleTab2 = { a: 'nav-a-selected', d: 'nav-tab-visible' };
             visibleTab3 = { a: 'nav-a', d: 'nav-tab-hidden' };
         }
-        else if (endsWith(loc, "/who/donors")) {
+        else if (endsWith(loc, "/who/donors") || endsWith(loc, '/PartialViews/Who/Donors.html')) {
             visibleTab0 = { a: 'nav-a', d: 'nav-tab-hidden' };
             visibleTab1 = { a: 'nav-a', d: 'nav-tab-hidden' };
             visibleTab2 = { a: 'nav-a', d: 'nav-tab-hidden' };
@@ -62,7 +63,7 @@ var WhoController = (function () {
         }
     }
 
-    function init(scope, location) {
+    function init(scope, location, route) {
         scope.historyClicked = function () {
             location.path("/who/history");
         };
@@ -86,14 +87,17 @@ var WhoController = (function () {
 
         selectBannerImage(scope);
         
+
+        setVisibleTab(route.current.loadedTemplateUrl);
+
     };
 
     return {
         Name: 'WhoController',
-        Controller: function ($scope, $location, $rootScope) {
-            init($scope, $location);
+        Controller: function ($scope, $location, $rootScope, $route) {
+            init($scope, $location, $route);
             $rootScope.$on('$locationChangeSuccess', function (evt, cur, prev) {
-                setVisibleTab(cur);
+                 setVisibleTab(cur);
             });
         }
     };

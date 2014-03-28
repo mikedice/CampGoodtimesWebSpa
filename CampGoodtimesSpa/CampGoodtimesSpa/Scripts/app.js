@@ -23,4 +23,4 @@ app.factory(NewsItemFactory.Name, NewsItemFactory.Factory);
 // Inject controllers
 app.controller(HomeViewController.Name, HomeViewController.Controller);
 app.controller(PageHeaderController.Name, ['$scope', '$location', PageHeaderController.Controller]);
-app.controller(WhoController.Name, ['$scope', '$location', '$rootScope', WhoController.Controller]);
+app.controller(WhoController.Name, ['$scope', '$location', '$rootScope', '$route', WhoController.Controller]);

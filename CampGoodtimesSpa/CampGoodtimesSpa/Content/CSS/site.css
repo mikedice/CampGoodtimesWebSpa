@@ -32,6 +32,19 @@ h3 {
   font-size: 22px;
   color: #474b59;
 }
+.h3-centered {
+  font-family: "proxima-nova";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px;
+  color: #474b59;
+  text-align: center;
+}
+.p-centered {
+  width: 80%;
+  text-align: center;
+  margin: 30px auto;
+}
 body {
   font-family: "proxima-nova";
   font-style: normal;
@@ -207,10 +220,8 @@ body {
   margin-top: 60px;
   margin-bottom: 60px;
 }
-.news-title-paragraph {
-  margin: 0;
-}
 .news-heading {
+  display: inline;
   font-family: "proxima-nova";
   font-weight: 700;
   font-style: normal;
@@ -218,14 +229,55 @@ body {
   color: #474b59;
 }
 .news-bullet-left {
+  position: relative;
+  top: -5px;
+  left: -10px;
+  display: inline;
   color: #ffc91d;
 }
 .news-bullet-right {
+  position: relative;
+  top: -5px;
+  left: 10px;
+  display: inline;
   color: #df334b;
 }
 .news-loading-indicator {
   width: 100px;
   margin: 30px auto;
   text-align: center;
+}
+.donors-donate {
+  color: #FFF;
+  background-color: #ffc91d;
+  font-weight: 700;
+  font-size: 18pt;
+  margin: 30px auto;
+  display: block;
+  width: 180px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+}
+.donors-donate:visited {
+  color: #FFF;
+  text-decoration: none;
+}
+#donate-sponsors-container {
+  height: 200px;
+  margin-top: 60px;
+  color: white;
+  text-align: center;
+  background-color: #ffc91d;
+  line-height: 200px;
+  vertical-align: middle;
+}
+#donate-sponsors-container img {
+  position: relative;
+  top: 15px;
 }
 /*# sourceMappingURL=site.css.map */

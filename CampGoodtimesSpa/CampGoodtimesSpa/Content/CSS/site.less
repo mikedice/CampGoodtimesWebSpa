@@ -33,6 +33,18 @@ h3
 {
     .HeadingFonts(22px);
 }
+.h3-centered
+{
+    .HeadingFonts(22px);
+    text-align:center;
+}
+
+.p-centered
+{
+    width:80%;
+    text-align:center;
+    margin: 30px auto;
+}
 
 body
 {
@@ -251,21 +263,28 @@ body
     margin-top: 60px;
     margin-bottom: 60px;
 }
-.news-title-paragraph{
-    margin: 0;
-}
+
 .news-heading
 {
+    display:inline;
     .HeadingFonts(36px);
 }
 
 .news-bullet-left
 {
+    position:relative;
+    top:-5px;
+    left: -10px;
+    display:inline;
     color: @colorThirdPrimary;
 }
 
 .news-bullet-right
 {
+    position:relative;
+    top:-5px;
+    left: 10px;
+    display:inline;
     color: @colorFirstPrimary;
 }
 
@@ -274,4 +293,44 @@ body
     width: 100px;
     margin: 30px auto;
     text-align: center;
+}
+
+.donors-donate
+{
+    color:#FFF;
+    background-color:@colorThirdPrimary;
+    font-weight: @boldFontWeight;
+    font-size: 18pt;
+    margin: 30px auto;
+    display:block;
+    width: 180px;
+    text-align:center;
+    text-decoration: none;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding-top: 4px;
+    padding-bottom: 5px;
+}
+
+.donors-donate:visited
+{
+    color:#FFF;
+    text-decoration:none;
+
+}
+
+#donate-sponsors-container
+{
+    height: 200px;
+    margin-top: 60px;
+    color: white;
+    text-align: center;
+    background-color: @colorThirdPrimary;
+    line-height:200px;
+    vertical-align:middle;
+    img{
+        position:relative;
+        top:15px;
+    }
 }
