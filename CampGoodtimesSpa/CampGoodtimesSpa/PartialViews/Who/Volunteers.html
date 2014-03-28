@@ -2,10 +2,10 @@
     <img id="home-image" src="{{bannerImageUrl}}" alt="home banner image" />
     <div id="who-buttonbar">
         <ul>
-            <li><a ng-class="visibleTab0.a" href="" ng-click="historyClicked()">History</a><div ng-class="visibleTab0.d"></div></li>
-            <li><a ng-class="visibleTab1.a" href="" ng-click="staffAndBoardClicked()">Staff and Board</a><div ng-class="visibleTab1.d"></div></li>
-            <li><a ng-class="visibleTab2.a" href="" ng-click="volunteersClicked()">Volunteers</a><div ng-class="visibleTab2.d"></div></li>
-            <li><a ng-class="visibleTab3.a" href="" ng-click="donorsClicked()">Donors</a><div ng-class="visibleTab3.d"></div></li>
+            <li><a ng-class="{'nav-a-selected': activeTab == 'history', 'nav-a' : activeTab != 'history'}" href="" ng-click="historyClicked()">History</a><div ng-class="{'nav-tab-visible': activeTab == 'history', 'nav-tab-hidden' : activeTab != 'history'}"></div></li>
+            <li><a ng-class="{'nav-a-selected': activeTab == 'staff', 'nav-a' : activeTab != 'staff'}" href="" ng-click="staffAndBoardClicked()">Staff and Board</a><div ng-class="{'nav-tab-visible': activeTab == 'staff', 'nav-tab-hidden' : activeTab != 'staff'}"></div></li>
+            <li><a ng-class="{'nav-a-selected': activeTab == 'volunteers', 'nav-a' : activeTab != 'volunteers'}" href="" ng-click="volunteersClicked()">Volunteers</a><div ng-class="{'nav-tab-visible': activeTab == 'volunteers', 'nav-tab-hidden' : activeTab != 'volunteers'}"></div></li>
+            <li><a ng-class="{'nav-a-selected': activeTab == 'donors', 'nav-a' : activeTab != 'donors'}" href="" ng-click="donorsClicked()">Donors</a><div ng-class="{'nav-tab-visible': activeTab == 'donors', 'nav-tab-hidden' : activeTab != 'donors'}"></div></li>
         </ul>
     </div>
     volunteers

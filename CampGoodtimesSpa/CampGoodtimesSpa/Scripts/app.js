@@ -9,11 +9,15 @@ var app = angular.module('GoodtimesApp', ['ngRoute', 'ngAnimate']);
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', { controller: 'HomeViewController', templateUrl: '/PartialViews/Home.html' })
-        .when('/who/history', { controller: 'WhoController', templateUrl: '/PartialViews/Who/History.html' })
-        .when('/who/staff', { controller: 'WhoController', templateUrl: '/PartialViews/Who/Staff.html' })
-        .when('/who/volunteers', { controller: 'WhoController', templateUrl: '/PartialViews/Who/Volunteers.html' })
-        .when('/who/donors', { controller: 'WhoController', templateUrl: '/PartialViews/Who/Donors.html' })
-        .when('/who', {redirectTo:'/who/history'})
+        .when('/who/:tab', {
+            controller: 'WhoController', templateUrl: function (p) {
+                if (p.tab == 'history') { return '/PartialViews/Who/History.html'; }
+                else if (p.tab == 'staff') { return '/PartialViews/Who/Staff.html'; }
+                else if (p.tab == 'volunteers') { return '/PartialViews/Who/Volunteers.html'; }
+                else if (p.tab == 'donors') { return '/PartialViews/Who/Donors.html'; }
+            }
+        })
+        .when('/who', { redirectTo: '/who/history' })
         .otherwise({ redirectTo: '/' });
 });
 
@@ -23,4 +27,4 @@ app.factory(NewsItemFactory.Name, NewsItemFactory.Factory);
 // Inject controllers
 app.controller(HomeViewController.Name, HomeViewController.Controller);
 app.controller(PageHeaderController.Name, ['$scope', '$location', PageHeaderController.Controller]);
-app.controller(WhoController.Name, ['$scope', '$location', '$rootScope', '$route', WhoController.Controller]);
+app.controller(WhoController.Name, ['$scope', '$location', '$route', WhoController.Controller]);
