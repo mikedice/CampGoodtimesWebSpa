@@ -13,6 +13,7 @@ namespace CampGoodtimesSpa.Models.Sharepoint.Feeds
         public bool IsVisible { get; set; }
         public DateTime PublishedOnGmt { get; set; }
         public string EventDate { get; set; }
-        public string EventImageUrl { get; set; }
+        public string EventImageSmall { get; set; }
+        public string EventImageLarge { get; set; }
     }
 }

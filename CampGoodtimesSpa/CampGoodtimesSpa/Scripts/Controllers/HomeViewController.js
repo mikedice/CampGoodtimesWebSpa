@@ -29,8 +29,8 @@ var HomeViewController = (function () {
         var result = [];
         for (var i = 0; i < 3; i++) {
             // if the EventImageUrl wasn't specified we should set it to the default
-            if (!data[i].hasOwnProperty("EventImageUrl") || data[i].EventImageUrl == null) {
-                data[i]["EventImageUrl"] = "/Content/images/layout/defaultnewsitem.png";
+            if (!data[i].hasOwnProperty("EventImageSmall") || data[i].EventImageSmall == null) {
+                data[i]["EventImageSmall"] = "/Content/images/layout/defaultnewsitem.png";
             }
 
             result.push(data[i]);

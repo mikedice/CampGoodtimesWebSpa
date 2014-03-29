@@ -94,6 +94,18 @@ namespace CampGoodtimesSpa.Services
             {
                 feedItem.EventDate = result.First().NextSibling.InnerText.Trim();
             }
+            
+            // optional fields
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='EventImageSmall:']");
+            if (result != null && result.Any())
+            {
+                feedItem.EventImageSmall = result.First().ParentNode.SelectSingleNode("a").Attributes["href"].Value;
+            }
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='EventImageLarge:']");
+            if (result != null && result.Any())
+            {
+                feedItem.EventImageLarge = result.First().ParentNode.SelectSingleNode("a").Attributes["href"].Value;
+            }
             return feedItem;
         }
 
