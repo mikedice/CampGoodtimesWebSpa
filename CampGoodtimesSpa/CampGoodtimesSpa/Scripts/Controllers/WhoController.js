@@ -22,7 +22,7 @@ var WhoController = (function () {
     }
 
 
-    function init(scope, location, route, donorsFactory) {
+    function init(scope, location, route, donorsFactory, sponsorsFactory) {
         scope.historyClicked = function () {
             location.path("/who/history");
         };
@@ -50,12 +50,20 @@ var WhoController = (function () {
             .error(function (data, status) {
                 window.alert("Error retrieving list of donors" + status);
             });
+
+        sponsorsFactory.getSponsorsList()
+            .success(function (data) {
+                scope.sponsorsList = data;
+            })
+            .error(function (data, status) {
+                window.alert("Error retrieving list of sponsors" + status);
+            });
     };
 
     return {
         Name: 'WhoController',
-        Controller: function ($scope, $location, $route, donorsFactory) {
-            init($scope, $location, $route, donorsFactory);
+        Controller: function ($scope, $location, $route, donorsFactory, sponsorsFactory) {
+            init($scope, $location, $route, donorsFactory, sponsorsFactory);
         }
     };
 

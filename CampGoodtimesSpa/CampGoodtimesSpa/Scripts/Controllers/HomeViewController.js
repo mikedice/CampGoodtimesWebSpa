@@ -40,7 +40,7 @@ var HomeViewController = (function () {
     }
 
     // Initialization
-    function init(scope, newsItemFactory) {
+    function init(scope, newsItemFactory, sponsorsFactory) {
         scope.newsItemsLoaded = false; // loading indicator variable
 
         selectBannerImage(scope);
@@ -53,6 +53,14 @@ var HomeViewController = (function () {
             .error(function (data, status) {
                 scope.newsItemsLoaded = true;
                 window.alert("Error retrieving news items " + status);
+            });
+
+        sponsorsFactory.getSponsorsList()
+            .success(function (data) {
+                scope.sponsorsList = data;
+            })
+            .error(function (data, status) {
+                window.alert("Error retrieving list of sponsors" + status);
             });
 
         // click handlers from UI elements
@@ -71,8 +79,8 @@ var HomeViewController = (function () {
 
     return {
         Name: 'HomeViewController',
-        Controller: function ($scope, newsItemFactory) {
-            init($scope, newsItemFactory);
+        Controller: function ($scope, newsItemFactory, sponsorsFactory) {
+            init($scope, newsItemFactory, sponsorsFactory);
         }
     };
 

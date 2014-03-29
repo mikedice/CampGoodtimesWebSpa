@@ -10,7 +10,7 @@
     </div>
     <h3 class="h3-centered">Our Top Sponsors</h3>
     <div id="donate-sponsors-container">
-        <img src="/Content/images/layout/donor-banner1.png" alt="" />
+        <img ng-repeat="sponsorItem in sponsorsList" src="{{sponsorItem.SponsorImageUrlSmall}}" alt="" />
     </div>
     <h3 class="h3-centered">Donations 'In Honor Of'</h3>
     <table id="donors-table">

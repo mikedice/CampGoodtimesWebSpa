@@ -27,6 +27,13 @@ namespace CampGoodtimesSpa.Controllers
             return sharepointService.GetDirectorNewsFeedAsync(url);
         }
 
+        [HttpGet]
+        public Task<IEnumerable<SponsorsFeedElement>> Sponsors()
+        {
+            string url = ConfigurationManager.AppSettings["WebsiteSponsors"];
+            return sharepointService.GetSponsorsAsync(url);
+        }
+
         //// GET api/api/5
         //public string Get(int id)
         //{

@@ -35,7 +35,7 @@
 
     <div id="home-sponsors-container">
         <div id="caption">We <span id="home-heart">&hearts;</span> Our Sponsors</div>
-        <div id="imagebar"><img src="/Content/images/layout/donor-banner1.png" alt="" /></div>
+        <div id="imagebar"><img ng-repeat="sponsorItem in sponsorsList" src="{{sponsorItem.SponsorImageUrlSmall}}" alt="" /></div>
     </div>
 </div>
 

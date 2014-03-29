@@ -20,9 +20,14 @@ namespace CampGoodtimesSpa.Services
             return GetNewsFeedAsync(newsFeedUrl, ParseNewsFromTheDirectorFeedItem);
         }
 
-        public Task<IEnumerable<CampEventElement>> GetCampeEventsAsync(string newsFeedUrl)
+        public Task<IEnumerable<CampEventElement>> GetCampEventsAsync(string eventsFeedUrl)
         {
-            return GetNewsFeedAsync(newsFeedUrl, ParseCampEventItem);
+            return GetNewsFeedAsync(eventsFeedUrl, ParseCampEventItem);
+        }
+
+        public Task<IEnumerable<SponsorsFeedElement>> GetSponsorsAsync(string sponsorsFeedUrl)
+        {
+            return GetNewsFeedAsync(sponsorsFeedUrl, ParseSponsorsFeed);
         }
 
         private Task<IEnumerable<TElem>> GetNewsFeedAsync<TElem>(string newsFeedUrl, Func<XElement, TElem> elementParser)
@@ -52,6 +57,34 @@ namespace CampGoodtimesSpa.Services
 
             wc.DownloadStringAsync(new Uri(newsFeedUrl));
             return tcs.Task;
+        }
+
+        private SponsorsFeedElement ParseSponsorsFeed(XElement feedXml)
+        {
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(feedXml.Element("description").Value);
+            var feedItem = new SponsorsFeedElement();
+
+            var result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Name:']");
+            if (result.Any())
+            {
+                feedItem.Name = result.First().NextSibling.InnerText.Trim();
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Visible on Website:']");
+            if (result.Any())
+            {
+                feedItem.VisibleOnWebsite = result.First().NextSibling.InnerText.Trim().ToLower().Equals("yes") ? true : false;
+            }
+
+            // optional fields
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='SponsorImageSmall:']");
+            if (result != null && result.Any())
+            {
+                feedItem.SponsorImageUrlSmall = result.First().ParentNode.SelectSingleNode("a").Attributes["href"].Value;
+            }
+
+            return feedItem;
         }
 
         private NewsFromTheDirectorElement ParseNewsFromTheDirectorFeedItem(XElement feedXml)
