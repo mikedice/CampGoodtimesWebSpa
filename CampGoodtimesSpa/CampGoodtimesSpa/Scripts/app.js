@@ -23,8 +23,9 @@ app.config(function ($routeProvider) {
 
 // Inject data factories
 app.factory(NewsItemFactory.Name, NewsItemFactory.Factory);
+app.factory(DonorsFactory.Name, DonorsFactory.Factory);
 
 // Inject controllers
 app.controller(HomeViewController.Name, HomeViewController.Controller);
 app.controller(PageHeaderController.Name, ['$scope', '$location', PageHeaderController.Controller]);
-app.controller(WhoController.Name, ['$scope', '$location', '$route', WhoController.Controller]);
+app.controller(WhoController.Name, ['$scope', '$location', '$route', DonorsFactory.Name, WhoController.Controller]);

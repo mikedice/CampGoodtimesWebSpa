@@ -1,16 +1,11 @@
 ﻿<div id="page-body">
     <img id="home-image" src="{{bannerImageUrl}}" alt="home banner image" />
-    <div id="who-buttonbar">
-        <ul>
-            <li><a ng-class="{'nav-a-selected': activeTab == 'history', 'nav-a' : activeTab != 'history'}" href="" ng-click="historyClicked()">History</a><div ng-class="{'nav-tab-visible': activeTab == 'history', 'nav-tab-hidden' : activeTab != 'history'}"></div></li>
-            <li><a ng-class="{'nav-a-selected': activeTab == 'staff', 'nav-a' : activeTab != 'staff'}" href="" ng-click="staffAndBoardClicked()">Staff and Board</a><div ng-class="{'nav-tab-visible': activeTab == 'staff', 'nav-tab-hidden' : activeTab != 'staff'}"></div></li>
-            <li><a ng-class="{'nav-a-selected': activeTab == 'volunteers', 'nav-a' : activeTab != 'volunteers'}" href="" ng-click="volunteersClicked()">Volunteers</a><div ng-class="{'nav-tab-visible': activeTab == 'volunteers', 'nav-tab-hidden' : activeTab != 'volunteers'}"></div></li>
-            <li><a ng-class="{'nav-a-selected': activeTab == 'donors', 'nav-a' : activeTab != 'donors'}" href="" ng-click="donorsClicked()">Donors</a><div ng-class="{'nav-tab-visible': activeTab == 'donors', 'nav-tab-hidden' : activeTab != 'donors'}"></div></li>
-        </ul>
-    </div>
+
+    <div ng-include="'/PartialViews/Who/WhoNavBar.html'"></div>
+
     <div class="news-title-container">
         <div class="news-bullet-left">&#9679;</div>
-        <div class="news-heading">Some Good News</div>
+        <div class="news-heading">Donations</div>
         <div class="news-bullet-right">&#9679;</div>
     </div>
     <h3 class="h3-centered">Our Top Sponsors</h3>
@@ -18,8 +13,15 @@
         <img src="/Content/images/layout/donor-banner1.png" alt="" />
     </div>
     <h3 class="h3-centered">Donations 'In Honor Of'</h3>
+    <table id="donors-table">
+        <tr ng-repeat="donor in getDonorsList">
+            <td>{{donor.Giver}}</td>
+            <td>{{donor.InHonorOf}}</td>
+        </tr>
+    </table>
+
     <h3 class="h3-centered">We Always Welcome Donations Big and Small</h3>
     <p class="p-centered">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacinia neque quis nibh fermentum, ut iaculis orci gravida. Quisque dapibus eros ut tellus vehicula, at cursus urna mattis. Integer eu velit magna. Integer sodales nibh et neque cursus tempus. Proin laoreet est et nisi gravida tempor ut vitae lacus. Donec vitae eros vel orci porta mollis vitae eget metus. Nunc eleifend tempus purus, ut sollicitudin nibh hendrerit sit amet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc placerat sollicitudin semper. Quisque ut odio tincidunt, suscipit sem sed, pulvinar urna. Nunc quam felis, aliquet sed ligula in, vulputate dapibus mauris. Pellentesque at erat ac tortor porttitor fringilla. Nunc id tellus ut mi mollis consequat in dapibus magna. Aenean tristique dignissim sem vel aliquet.</p>
-    
+
     <a class="donors-donate" href="" ng-click="donateClicked()">DONATE</a>
 </div>
