@@ -10,5 +10,6 @@ namespace CampGoodtimesSpa.Models.Sharepoint.Feeds
         public string Name { get; set; }
         public string Title { get; set; }
         public string PictureUrl { get; set; }
+        public int Order { get; set; }
     }
 }

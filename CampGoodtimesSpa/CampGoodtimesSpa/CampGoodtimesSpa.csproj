@@ -162,6 +162,7 @@
     <Content Include="Content\images\layout\donor-banner1.png" />
     <Content Include="Content\images\layout\goodtimes-loading.gif" />
     <Content Include="Content\images\layout\goodtimes_logo_white_small.png" />
+    <Content Include="Content\images\layout\transparentBackground.png" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
     <Content Include="PartialViews\Who\Donors.html" />

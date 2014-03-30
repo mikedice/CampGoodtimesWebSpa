@@ -3,21 +3,46 @@
 
     <div ng-include="'/PartialViews/Who/WhoNavBar.html'"></div>
 
-    <h3>Board Members</h3>
+    <div class="news-title-container">
+        <div class="news-bullet-left">&#9679;</div>
+        <div class="news-heading">Our Staff &amp; Board Members</div>
+        <div class="news-bullet-right">&#9679;</div>
+    </div>
+
+    <h3 class="h3-centered">Our Board Members</h3>
+    <div class="news-loading-indicator" ng-show="!boardMembersLoaded">
+        <img src="/Content/images/layout/goodtimes-loading.gif" alt="" />
+        <span>Loading Board Members...</span>
+    </div>
     <div id="employee-container">
         <div class="employee-row" ng-repeat="row in boardList">
             <div class="employee-element" ng-repeat="person in row">
                 <img src="{{person.PictureUrl}}" alt=""/>
+                <div class="employee-caption">
+                    <div class="name">{{person.Name}}</div>
+                    <div class="title">{{person.Title}}</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <h3>Staff</h3>
+    <div class="spacer-50"></div>
+
+    <h3 class="h3-centered">Our Staff</h3>
+    <div class="news-loading-indicator" ng-show="!staffMembersLoaded">
+        <img src="/Content/images/layout/goodtimes-loading.gif" alt="" />
+        <span>Loading Staff Members...</span>
+    </div>
     <div id="employee-container">
         <div class="employee-row" ng-repeat="row in staffList">
             <div class="employee-element" ng-repeat="person in row">
                 <img src="{{person.PictureUrl}}" alt="" />
+                <div class="employee-caption">
+                    <div class="name">{{person.Name}}</div>
+                    <div class="title">{{person.Title}}</div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="spacer-50"></div>
 </div>

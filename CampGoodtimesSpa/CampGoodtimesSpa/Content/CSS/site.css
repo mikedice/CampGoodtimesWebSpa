@@ -45,6 +45,9 @@ h3 {
   text-align: center;
   margin: 30px auto;
 }
+.spacer-50 {
+  height: 50px;
+}
 body {
   font-family: "proxima-nova";
   font-style: normal;
@@ -292,9 +295,34 @@ body {
 }
 .employee-row .employee-element {
   display: inline-block;
-  width: 300px;
-  height: 160px;
+  width: 302px;
+  height: 350px;
   background-color: #eaeff9;
   overflow: hidden;
+  margin-left: 9px;
+  margin-right: 9px;
+}
+.employee-row .employee-caption {
+  background: url("/Content/images/layout/transparentBackground.png");
+  position: relative;
+  top: -65px;
+  z-index: 1000;
+  height: 65px;
+}
+.employee-row .employee-caption .name {
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+}
+.employee-row .employee-caption .title {
+  font-weight: bold;
+  font-size: 13px;
+  color: #fff;
+  opacity: .65;
+}
+.employee-row img {
+  height: 350px;
+  max-width: 302px;
+  vertical-align: middle;
 }
 /*# sourceMappingURL=site.css.map */

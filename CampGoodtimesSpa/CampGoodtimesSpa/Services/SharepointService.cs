@@ -32,12 +32,18 @@ namespace CampGoodtimesSpa.Services
 
         public Task<IEnumerable<Employee>> GetStaffAsync(string staffFeedUrl)
         {
-            return GetFeedAsync(staffFeedUrl, ParseEmployeeItem);
+            return GetFeedAsync(staffFeedUrl, ParseEmployeeItem).ContinueWith((completed) =>
+            {
+                return completed.Result.OrderBy(t => t.Order).AsEnumerable();
+            });
         }
 
         public Task<IEnumerable<Employee>> GetBoardAsync(string boardFeedUrl)
         {
-            return GetFeedAsync(boardFeedUrl, ParseEmployeeItem);
+            return GetFeedAsync(boardFeedUrl, ParseEmployeeItem).ContinueWith((completed) =>
+            {
+                return completed.Result.OrderBy(t => t.Order).AsEnumerable();
+            });
         }
 
         private Task<IEnumerable<TElem>> GetFeedAsync<TElem>(string newsFeedUrl, Func<XElement, TElem> elementParser)
@@ -229,6 +235,16 @@ namespace CampGoodtimesSpa.Services
                 feedItem.PictureUrl = result.First().ParentNode.SelectSingleNode("a").Attributes["href"].Value;
             }
 
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Order:']");
+            if (result != null && result.Any())
+            {
+                feedItem.Order = 9999; // put it at the back of the list by default;
+                int order;
+                if (int.TryParse(result.First().NextSibling.InnerText.Trim().ToLower(), out order))
+                {
+                    feedItem.Order = order;
+                }
+            }
             return feedItem;
         }
     }

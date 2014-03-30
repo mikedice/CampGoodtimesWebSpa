@@ -45,6 +45,7 @@ var WhoController = (function () {
 
 
     function init(scope, location, route, donorsFactory, sponsorsFactory, staffAndBoardFactory) {
+        // initialize click handlers for nav bar buttons
         scope.historyClicked = function () {
             location.path("/who/history");
         };
@@ -61,10 +62,18 @@ var WhoController = (function () {
             location.path("/who/donors");
         };
 
+        // The active tab route parameter is defined in the 
+        // app route configuration
         scope.activeTab = route.current.params['tab']; 
 
+        // Controls loading indicators for staff and board members
+        scope.staffMembersLoaded = false;
+        scope.boardMembersLoaded = false;
+
+        // randomly pick a banner image for the page
         selectBannerImage(scope);
 
+        // load async data
         donorsFactory.getDonorsList()
             .success(function (data) {
                 scope.getDonorsList = data;
@@ -84,17 +93,21 @@ var WhoController = (function () {
         staffAndBoardFactory.getStaff()
             .success(function (data) {
                 scope.staffList = processEmployeeList(data);
+                scope.staffMembersLoaded = true;
             })
             .error(function (data, status) {
                 window.alert("Error retrieving list of staff" + status);
+                scope.staffMembersLoaded = true; // stops the loading indicator
             });
 
         staffAndBoardFactory.getBoard()
             .success(function (data) {
                 scope.boardList = processEmployeeList(data);
+                scope.boardMembersLoaded = true;
             })
             .error(function (data, status) {
                 window.alert("Error retrieving list of board" + status);
+                scope.boardMembersLoaded = true; // stops the loading... indicator
             });
     };
 
