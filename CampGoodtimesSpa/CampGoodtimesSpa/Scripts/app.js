@@ -26,6 +26,7 @@ app.factory(NewsItemFactory.Name, NewsItemFactory.Factory);
 app.factory(DonorsFactory.Name, DonorsFactory.Factory);
 app.factory(SponsorsFactory.Name, SponsorsFactory.Factory);
 app.factory(StaffAndBoardFactory.Name, StaffAndBoardFactory.Factory)
+app.factory(VolunteersFactory.Name, VolunteersFactory.Factory)
 
 // Inject controllers
 app.controller(HomeViewController.Name, ['$scope', NewsItemFactory.Name, SponsorsFactory.Name, HomeViewController.Controller]);
@@ -36,5 +37,6 @@ app.controller(WhoController.Name, ['$scope',
                                     DonorsFactory.Name,
                                     SponsorsFactory.Name,
                                     StaffAndBoardFactory.Name,
+                                    VolunteersFactory.Name,
                                     WhoController.Controller
                                     ]);

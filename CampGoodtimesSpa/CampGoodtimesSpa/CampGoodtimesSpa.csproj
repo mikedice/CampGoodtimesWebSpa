@@ -135,6 +135,7 @@
     <Compile Include="Models\Sharepoint\Feeds\Employee.cs" />
     <Compile Include="Models\Sharepoint\Feeds\NewsFromTheDirectorElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\SponsorsFeedElement.cs" />
+    <Compile Include="Models\Sharepoint\Feeds\Volunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ISharepointService.cs" />
     <Compile Include="Services\SharepointService.cs" />
@@ -182,6 +183,7 @@
     <Content Include="PartialViews\Home.html" />
     <Content Include="Scripts\Factories\SponsorsFactory.js" />
     <Content Include="Scripts\Factories\StaffAndBoardFactory.js" />
+    <Content Include="Scripts\Factories\VolunteersFactory.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

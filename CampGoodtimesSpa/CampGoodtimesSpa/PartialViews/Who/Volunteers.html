@@ -3,5 +3,47 @@
 
     <div ng-include="'/PartialViews/Who/WhoNavBar.html'"></div>
 
-    volunteers
+    <div class="news-title-container">
+        <div class="news-bullet-left">&#9679;</div>
+        <div class="news-heading">Our Volunteers</div>
+        <div class="news-bullet-right">&#9679;</div>
+    </div>
+
+    <div class="news-loading-indicator" ng-show="!volunteersLoaded">
+        <img src="/Content/images/layout/goodtimes-loading.gif" alt="" />
+        <span>Loading volunteers...</span>
+    </div>
+
+    <div ng-show="!hideEvent">
+        <h3 class="h3-centered">Camp &amp; Event Volunteers</h3>
+        <div id="employee-container">
+            <div class="employee-row" ng-repeat="row in volunteerEvent">
+                <div class="employee-element" ng-repeat="person in row">
+                    <img src="{{person.Picture}}" alt="" />
+                    <div class="employee-caption">
+                        <div class="name">{{person.Name}}</div>
+                        <div class="title">{{person.Title}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spacer-50"></div>
+    </div>
+
+    <div ng-show="!hideYearRound">
+        <h3 class="h3-centered">Our Year-Round Volunteers</h3>
+        <div id="employee-container">
+            <div class="employee-row" ng-repeat="row in volunteerYearRound">
+                <div class="employee-element" ng-repeat="person in row">
+                    <img src="{{person.Picture}}" alt="" />
+                    <div class="employee-caption">
+                        <div class="name">{{person.Name}}</div>
+                        <div class="title">{{person.Title}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spacer-50"></div>
+    </div>
+    
 </div>

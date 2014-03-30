@@ -15,8 +15,7 @@
     <h3 class="h3-centered">Donations 'In Honor Of'</h3>
     <table id="donors-table">
         <tr ng-repeat="donor in getDonorsList">
-            <td>{{donor.Giver}}</td>
-            <td>{{donor.InHonorOf}}</td>
+            <td>{{donor.Giver}} in honor of {{donor.InHonorOf}}</td>
         </tr>
     </table>
 

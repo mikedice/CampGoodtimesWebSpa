@@ -43,8 +43,48 @@ var WhoController = (function () {
         return table;
     }
 
+    function processVolunteersList(scope, data)
+    {
+        var yearRound = [];
+        var event = [];
+        for (var i = 0; i<data.length; i++)
+        {
+            if (data[i].Category != null)
+            {
+                if (data[i].Category == 'YearRound')
+                {
+                    pushVisible(yearRound, data[i]);
+                }
+                else if (data[i].Category == 'CampAndEvent')
+                {
+                    pushVisible(event, data[i]);
+                }
+                else
+                {
+                    pushVisisble(yearRound, data[i]);
+                }
+            }
+            else {
+                pushVisible(yearRound, data[i]);
+            }
+        }
 
-    function init(scope, location, route, donorsFactory, sponsorsFactory, staffAndBoardFactory) {
+        scope.volunteerYearRound = processEmployeeList(yearRound);
+        scope.volunteerEvent = processEmployeeList(event);
+        scope.hideYearRound = scope.volunteerYearRound.length == 1 && scope.volunteerYearRound[0].length == 0;
+        scope.hideEvent = scope.volunteerEvent.length == 1 && scope.volunteerEvent[0].length == 0;
+    }
+
+    function pushVisible(list, element)
+    {
+        if (element != null && element.ShowOnWebsite == true)
+        {
+            list.push(element);
+        }
+    }
+
+
+    function init(scope, location, route, donorsFactory, sponsorsFactory, staffAndBoardFactory, volunteersFactory) {
         // initialize click handlers for nav bar buttons
         scope.historyClicked = function () {
             location.path("/who/history");
@@ -69,6 +109,7 @@ var WhoController = (function () {
         // Controls loading indicators for staff and board members
         scope.staffMembersLoaded = false;
         scope.boardMembersLoaded = false;
+        scope.volunteersLoaded = false;
 
         // randomly pick a banner image for the page
         selectBannerImage(scope);
@@ -106,15 +147,25 @@ var WhoController = (function () {
                 scope.boardMembersLoaded = true;
             })
             .error(function (data, status) {
-                window.alert("Error retrieving list of board" + status);
+                window.alert("Error retrieving board list" + status);
                 scope.boardMembersLoaded = true; // stops the loading... indicator
+            });
+
+        volunteersFactory.getVolunteers()
+            .success(function (data) {
+                processVolunteersList(scope, data);
+                scope.volunteersLoaded = true;
+            })
+            .error(function (data, status) {
+                window.alert("Error retrieving list of volunteers" + status);
+                scope.volunteersLoaded= true; // stops the loading... indicator
             });
     };
 
     return {
         Name: 'WhoController',
-        Controller: function ($scope, $location, $route, donorsFactory, sponsorsFactory, staffAndBoardFactory) {
-            init($scope, $location, $route, donorsFactory, sponsorsFactory, staffAndBoardFactory);
+        Controller: function ($scope, $location, $route, donorsFactory, sponsorsFactory, staffAndBoardFactory, volunteersFactory) {
+            init($scope, $location, $route, donorsFactory, sponsorsFactory, staffAndBoardFactory, volunteersFactory);
         }
     };
 

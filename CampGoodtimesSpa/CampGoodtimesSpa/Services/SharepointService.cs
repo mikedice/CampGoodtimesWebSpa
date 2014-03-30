@@ -46,6 +46,14 @@ namespace CampGoodtimesSpa.Services
             });
         }
 
+        public Task<IEnumerable<Volunteer>> GetVolunteersAsync(string volunteerFeedUrl)
+        {
+            return GetFeedAsync(volunteerFeedUrl, ParseVolunteerItem).ContinueWith((completed) =>
+            {
+                return completed.Result.OrderBy(t => t.Category).OrderBy(t => t.Order).AsEnumerable();
+            });
+        }
+
         private Task<IEnumerable<TElem>> GetFeedAsync<TElem>(string newsFeedUrl, Func<XElement, TElem> elementParser)
         {
             var tcs = new TaskCompletionSource<IEnumerable<TElem>>();
@@ -229,6 +237,12 @@ namespace CampGoodtimesSpa.Services
                 feedItem.Title = result.First().NextSibling.InnerText.Trim();
             }
 
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Category:']");
+            if (result != null && result.Any())
+            {
+                feedItem.Title = result.First().NextSibling.InnerText.Trim();
+            }
+
             result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Picture:']");
             if (result != null && result.Any())
             {
@@ -245,6 +259,57 @@ namespace CampGoodtimesSpa.Services
                     feedItem.Order = order;
                 }
             }
+
+            return feedItem;
+        }
+
+        private Volunteer ParseVolunteerItem(XElement feedXml)
+        {
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(feedXml.Element("description").Value);
+            var feedItem = new Volunteer();
+
+            var result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Name:']");
+            if (result.Any())
+            {
+                feedItem.Name = WebUtility.HtmlDecode(result.First().NextSibling.InnerText.Trim());
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Title:']");
+            if (result != null && result.Any())
+            {
+                feedItem.Title = result.First().NextSibling.InnerText.Trim();
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Category:']");
+            if (result != null && result.Any())
+            {
+                feedItem.Category = result.First().NextSibling.InnerText.Trim();
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Picture:']");
+            if (result != null && result.Any())
+            {
+                feedItem.Picture = result.First().ParentNode.SelectSingleNode("a").Attributes["href"].Value;
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Order:']");
+            if (result != null && result.Any())
+            {
+                feedItem.Order = 9999; // put it at the back of the list by default;
+                int order;
+                if (int.TryParse(result.First().NextSibling.InnerText.Trim().ToLower(), out order))
+                {
+                    feedItem.Order = order;
+                }
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='ShowOnWebsite:']");
+            if (result.Any())
+            {
+                feedItem.ShowOnWebsite = result.First().NextSibling.InnerText.Trim().ToLower().Equals("yes") ? true : false;
+            }
+
             return feedItem;
         }
     }

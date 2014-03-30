@@ -280,6 +280,7 @@ body {
 }
 #donors-table tr {
   vertical-align: top;
+  text-align: center;
 }
 #donors-table td {
   width: 50%;
