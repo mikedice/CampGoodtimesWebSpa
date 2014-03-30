@@ -285,4 +285,16 @@ body {
 #donors-table tr:nth-child(odd) {
   background-color: #eaeff9;
 }
+.employee-row {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+.employee-row .employee-element {
+  display: inline-block;
+  width: 300px;
+  height: 160px;
+  background-color: #eaeff9;
+  overflow: hidden;
+}
 /*# sourceMappingURL=site.css.map */

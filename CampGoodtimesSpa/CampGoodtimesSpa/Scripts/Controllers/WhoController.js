@@ -21,8 +21,30 @@ var WhoController = (function () {
         scope.bannerImageUrl = defaultBannerImages[index];
     }
 
+    function processEmployeeList(data)
+    {
+        // The purpose of this function is to break up the list
+        // into rows of three
+        var table = [];
+        var tuple = [];
+        var r = 0;
+        for (var i = 0; i<data.length; i++)
+        {
+            tuple.push(data[i]);
+            r++;
+            if (r >= 3)
+            {
+                table.push(tuple);
+                tuple = [];
+                r = 0;
+            }
+        }
+        table.push(tuple); // push the last tuple
+        return table;
+    }
 
-    function init(scope, location, route, donorsFactory, sponsorsFactory) {
+
+    function init(scope, location, route, donorsFactory, sponsorsFactory, staffAndBoardFactory) {
         scope.historyClicked = function () {
             location.path("/who/history");
         };
@@ -58,12 +80,28 @@ var WhoController = (function () {
             .error(function (data, status) {
                 window.alert("Error retrieving list of sponsors" + status);
             });
+
+        staffAndBoardFactory.getStaff()
+            .success(function (data) {
+                scope.staffList = processEmployeeList(data);
+            })
+            .error(function (data, status) {
+                window.alert("Error retrieving list of staff" + status);
+            });
+
+        staffAndBoardFactory.getBoard()
+            .success(function (data) {
+                scope.boardList = processEmployeeList(data);
+            })
+            .error(function (data, status) {
+                window.alert("Error retrieving list of board" + status);
+            });
     };
 
     return {
         Name: 'WhoController',
-        Controller: function ($scope, $location, $route, donorsFactory, sponsorsFactory) {
-            init($scope, $location, $route, donorsFactory, sponsorsFactory);
+        Controller: function ($scope, $location, $route, donorsFactory, sponsorsFactory, staffAndBoardFactory) {
+            init($scope, $location, $route, donorsFactory, sponsorsFactory, staffAndBoardFactory);
         }
     };
 

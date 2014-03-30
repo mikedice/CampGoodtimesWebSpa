@@ -17,20 +17,30 @@ namespace CampGoodtimesSpa.Services
     {
         public Task<IEnumerable<NewsFromTheDirectorElement>> GetDirectorNewsFeedAsync(string newsFeedUrl)
         {
-            return GetNewsFeedAsync(newsFeedUrl, ParseNewsFromTheDirectorFeedItem);
+            return GetFeedAsync(newsFeedUrl, ParseNewsFromTheDirectorFeedItem);
         }
 
         public Task<IEnumerable<CampEventElement>> GetCampEventsAsync(string eventsFeedUrl)
         {
-            return GetNewsFeedAsync(eventsFeedUrl, ParseCampEventItem);
+            return GetFeedAsync(eventsFeedUrl, ParseCampEventItem);
         }
 
         public Task<IEnumerable<SponsorsFeedElement>> GetSponsorsAsync(string sponsorsFeedUrl)
         {
-            return GetNewsFeedAsync(sponsorsFeedUrl, ParseSponsorsFeed);
+            return GetFeedAsync(sponsorsFeedUrl, ParseSponsorsFeed);
         }
 
-        private Task<IEnumerable<TElem>> GetNewsFeedAsync<TElem>(string newsFeedUrl, Func<XElement, TElem> elementParser)
+        public Task<IEnumerable<Employee>> GetStaffAsync(string staffFeedUrl)
+        {
+            return GetFeedAsync(staffFeedUrl, ParseEmployeeItem);
+        }
+
+        public Task<IEnumerable<Employee>> GetBoardAsync(string boardFeedUrl)
+        {
+            return GetFeedAsync(boardFeedUrl, ParseEmployeeItem);
+        }
+
+        private Task<IEnumerable<TElem>> GetFeedAsync<TElem>(string newsFeedUrl, Func<XElement, TElem> elementParser)
         {
             var tcs = new TaskCompletionSource<IEnumerable<TElem>>();
 
@@ -192,6 +202,33 @@ namespace CampGoodtimesSpa.Services
             {
                 feedItem.WelcomeTo = result.First().NextSibling.InnerText.Trim();
             }
+            return feedItem;
+        }
+
+        private Employee ParseEmployeeItem(XElement feedXml)
+        {
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(feedXml.Element("description").Value);
+            var feedItem = new Employee();
+
+            var result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Name:']");
+            if (result.Any())
+            {
+                feedItem.Name = WebUtility.HtmlDecode(result.First().NextSibling.InnerText.Trim());
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Title:']");
+            if (result != null && result.Any())
+            {
+                feedItem.Title = result.First().NextSibling.InnerText.Trim();
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Picture:']");
+            if (result != null && result.Any())
+            {
+                feedItem.PictureUrl = result.First().ParentNode.SelectSingleNode("a").Attributes["href"].Value;
+            }
+
             return feedItem;
         }
     }

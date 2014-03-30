@@ -132,6 +132,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Sharepoint\Feeds\CampEventElement.cs" />
+    <Compile Include="Models\Sharepoint\Feeds\Employee.cs" />
     <Compile Include="Models\Sharepoint\Feeds\NewsFromTheDirectorElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\SponsorsFeedElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -179,6 +180,7 @@
     <Content Include="Scripts\Factories\NewsItemFactory.js" />
     <Content Include="PartialViews\Home.html" />
     <Content Include="Scripts\Factories\SponsorsFactory.js" />
+    <Content Include="Scripts\Factories\StaffAndBoardFactory.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

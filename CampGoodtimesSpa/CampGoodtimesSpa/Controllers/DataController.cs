@@ -34,6 +34,20 @@ namespace CampGoodtimesSpa.Controllers
             return sharepointService.GetSponsorsAsync(url);
         }
 
+        [HttpGet]
+        public Task<IEnumerable<Employee>> Staff()
+        {
+            string url = ConfigurationManager.AppSettings["StaffFeed"];
+            return sharepointService.GetStaffAsync(url);
+        }
+
+        [HttpGet]
+        public Task<IEnumerable<Employee>> Board()
+        {
+            string url = ConfigurationManager.AppSettings["BoardFeed"];
+            return sharepointService.GetBoardAsync(url);
+        }
+
         //// GET api/api/5
         //public string Get(int id)
         //{

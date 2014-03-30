@@ -3,5 +3,21 @@
 
     <div ng-include="'/PartialViews/Who/WhoNavBar.html'"></div>
 
-    Staff
+    <h3>Board Members</h3>
+    <div id="employee-container">
+        <div class="employee-row" ng-repeat="row in boardList">
+            <div class="employee-element" ng-repeat="person in row">
+                <img src="{{person.PictureUrl}}" alt=""/>
+            </div>
+        </div>
+    </div>
+
+    <h3>Staff</h3>
+    <div id="employee-container">
+        <div class="employee-row" ng-repeat="row in staffList">
+            <div class="employee-element" ng-repeat="person in row">
+                <img src="{{person.PictureUrl}}" alt="" />
+            </div>
+        </div>
+    </div>
 </div>
