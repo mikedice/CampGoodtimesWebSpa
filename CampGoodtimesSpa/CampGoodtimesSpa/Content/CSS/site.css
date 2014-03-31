@@ -362,4 +362,52 @@ body {
   padding: 15px 30px;
   color: #fff;
 }
+#events-container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 60px;
+}
+#events-container .event-info-container {
+  display: inline-block;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+#events-container .event-info-container img {
+  width: 600px;
+  vertical-align: top;
+}
+#events-container .event-info-container .img-left {
+  margin-right: 20px;
+}
+#events-container .event-info-container .img-right {
+  margin-left: 20px;
+}
+#events-container .event-info-container .event-title-container {
+  display: inline-block;
+  width: 40%;
+  text-align: left;
+}
+#events-container .event-info-container .event-title-container .attendance {
+  margin: 0;
+  padding: 0;
+}
+#events-container .event-info-container .event-title-container a {
+  text-decoration: none;
+  background-color: #8566ff;
+  padding: 15px 30px;
+  color: #fff;
+}
+#scholarships-content a {
+  text-decoration: none;
+  background-color: #8566ff;
+  padding: 15px 30px;
+  color: #fff;
+}
+#scholarships-content .anchor-aligner {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 /*# sourceMappingURL=site.css.map */

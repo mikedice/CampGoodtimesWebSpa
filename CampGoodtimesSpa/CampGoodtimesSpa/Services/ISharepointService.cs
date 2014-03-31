@@ -17,5 +17,6 @@ namespace CampGoodtimesSpa.Services
         Task<IEnumerable<Employee>> GetBoardAsync(string boardFeedUrl);
         Task<IEnumerable<Volunteer>> GetVolunteersAsync(string volunteerFeedUrl);
         Task<IEnumerable<CampsElement>> GetCampsAsync(string campsFeedUrl);
+        Task<IEnumerable<EventsElement>> GetEventsAsync(string eventsFeedUrl);
     }
 }

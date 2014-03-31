@@ -61,6 +61,14 @@ namespace CampGoodtimesSpa.Controllers
             string url = ConfigurationManager.AppSettings["CampsFeed"];
             return sharepointService.GetCampsAsync(url);
         }
+
+        [HttpGet]
+        public Task<IEnumerable<EventsElement>> Events()
+        {
+            string url = ConfigurationManager.AppSettings["EventsFeed"];
+            return sharepointService.GetEventsAsync(url);
+        }
+
         //// GET api/api/5
         //public string Get(int id)
         //{

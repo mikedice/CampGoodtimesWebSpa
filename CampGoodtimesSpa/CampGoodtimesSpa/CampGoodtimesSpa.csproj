@@ -134,6 +134,7 @@
     <Compile Include="Models\Sharepoint\Feeds\CampEventElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\CampsElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\Employee.cs" />
+    <Compile Include="Models\Sharepoint\Feeds\EventsElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\NewsFromTheDirectorElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\SponsorsFeedElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\Volunteer.cs" />

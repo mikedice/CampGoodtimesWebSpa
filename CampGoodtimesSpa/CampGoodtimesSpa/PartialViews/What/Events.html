@@ -2,5 +2,38 @@
     <img id="home-image" src="{{bannerImageUrl}}" alt="home banner image" />
 
     <div ng-include="'/PartialViews/What/WhatNavBar.html'"></div>
-    Events!
+    
+    <div class="news-loading-indicator" ng-show="!eventsLoaded">
+        <img src="/Content/images/layout/goodtimes-loading.gif" alt="" />
+        <span>Loading Events...</span>
+    </div>
+
+    <div id="events-container">
+        <div ng-repeat="event in eventsList">
+            <div ng-switch on="event.side">
+                <div class="event-info-container" ng-switch-when="left">
+                    <img class="img-left" src="{{event.BannerPicture}}" alt="">
+
+                    <div class="event-title-container">
+                        <p class="attendance">{{event.Attendance}}</p>
+                        <h1 class="title">{{event.Title}}</h1>
+                        <p>{{event.DateString}}</p>
+                        <p>{{event.ShortDescription}}</p>
+                        <a href="" ng-click="learnMoreClicked(event.Title)">Learn More</a>
+                    </div>
+                </div>
+                <div class="event-info-container" ng-switch-when="right">
+                    <div class="event-title-container">
+                        <p class="attendance">{{event.Attendance}}</p>
+                        <h1 class="title">{{event.Title}}</h1>
+                        <p>{{event.DateString}}</p>
+                        <p>{{event.ShortDescription}}</p>
+                        <a href="" ng-click="learnMoreClicked(event.Title)">Learn More</a>
+                    </div>
+
+                    <img class="img-right" src="{{event.BannerPicture}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

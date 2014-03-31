@@ -62,6 +62,14 @@ namespace CampGoodtimesSpa.Services
             });
         }
 
+        public Task<IEnumerable<EventsElement>> GetEventsAsync(string eventsFeedUrl)
+        {
+            return GetFeedAsync(eventsFeedUrl, ParseEventsFeedItem).ContinueWith((completed) =>
+            {
+                return completed.Result.Where(t => t.ShowOnWebsite).OrderBy(t => t.Order).AsEnumerable();
+            });
+        }
+
         private Task<IEnumerable<TElem>> GetFeedAsync<TElem>(string newsFeedUrl, Func<XElement, TElem> elementParser)
         {
             var tcs = new TaskCompletionSource<IEnumerable<TElem>>();
@@ -326,6 +334,62 @@ namespace CampGoodtimesSpa.Services
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(feedXml.Element("description").Value);
             var feedItem = new CampsElement();
+
+            var result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Title:']");
+            if (result.Any())
+            {
+                feedItem.Title = WebUtility.HtmlDecode(result.First().NextSibling.InnerText.Trim());
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Attendance:']");
+            if (result.Any())
+            {
+                feedItem.Attendance = WebUtility.HtmlDecode(result.First().NextSibling.InnerText.Trim());
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='DateString:']");
+            if (result.Any())
+            {
+                feedItem.DateString = WebUtility.HtmlDecode(result.First().NextSibling.InnerText.Trim());
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='ShortDescription:']");
+            if (result.Any())
+            {
+                feedItem.ShortDescription = WebUtility.HtmlDecode(result.First().NextSibling.InnerText.Trim());
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='BannerPicture:']");
+            if (result != null && result.Any())
+            {
+                feedItem.BannerPicture = result.First().ParentNode.SelectSingleNode("a").Attributes["href"].Value;
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Order:']");
+            if (result != null && result.Any())
+            {
+                feedItem.Order = 9999; // put it at the back of the list by default;
+                int order;
+                if (int.TryParse(result.First().NextSibling.InnerText.Trim().ToLower(), out order))
+                {
+                    feedItem.Order = order;
+                }
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='ShowOnWebsite:']");
+            if (result.Any())
+            {
+                feedItem.ShowOnWebsite = result.First().NextSibling.InnerText.Trim().ToLower().Equals("yes") ? true : false;
+            }
+
+            return feedItem;
+        }
+
+        private EventsElement ParseEventsFeedItem(XElement feedXml)
+        {
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(feedXml.Element("description").Value);
+            var feedItem = new EventsElement();
 
             var result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Title:']");
             if (result.Any())

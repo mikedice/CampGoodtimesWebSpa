@@ -5,6 +5,7 @@
             var factory = {};
 
             factory.getCamps = function () { return $http.get("/api/Data/Camps"); };
+            factory.getEvents = function () { return $http.get("/api/Data/Events"); };
             return factory;
         }
     };
