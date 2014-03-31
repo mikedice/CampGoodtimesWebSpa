@@ -84,7 +84,7 @@ var WhoController = (function () {
     }
 
 
-    function init(scope, location, route, donorsFactory, sponsorsFactory, staffAndBoardFactory, volunteersFactory) {
+    function init(scope, location, route, whoFactory, sponsorsFactory) {
         // initialize click handlers for nav bar buttons
         scope.historyClicked = function () {
             location.path("/who/history");
@@ -115,7 +115,7 @@ var WhoController = (function () {
         selectBannerImage(scope);
 
         // load async data
-        donorsFactory.getDonorsList()
+        whoFactory.getDonorsList()
             .success(function (data) {
                 scope.getDonorsList = data;
             })
@@ -131,7 +131,7 @@ var WhoController = (function () {
                 window.alert("Error retrieving list of sponsors" + status);
             });
 
-        staffAndBoardFactory.getStaff()
+        whoFactory.getStaff()
             .success(function (data) {
                 scope.staffList = processEmployeeList(data);
                 scope.staffMembersLoaded = true;
@@ -141,7 +141,7 @@ var WhoController = (function () {
                 scope.staffMembersLoaded = true; // stops the loading indicator
             });
 
-        staffAndBoardFactory.getBoard()
+        whoFactory.getBoard()
             .success(function (data) {
                 scope.boardList = processEmployeeList(data);
                 scope.boardMembersLoaded = true;
@@ -151,7 +151,7 @@ var WhoController = (function () {
                 scope.boardMembersLoaded = true; // stops the loading... indicator
             });
 
-        volunteersFactory.getVolunteers()
+        whoFactory.getVolunteers()
             .success(function (data) {
                 processVolunteersList(scope, data);
                 scope.volunteersLoaded = true;
@@ -164,8 +164,8 @@ var WhoController = (function () {
 
     return {
         Name: 'WhoController',
-        Controller: function ($scope, $location, $route, donorsFactory, sponsorsFactory, staffAndBoardFactory, volunteersFactory) {
-            init($scope, $location, $route, donorsFactory, sponsorsFactory, staffAndBoardFactory, volunteersFactory);
+        Controller: function ($scope, $location, $route,  whoFactory, sponsorsFactory) {
+            init($scope, $location, $route,  whoFactory, sponsorsFactory);
         }
     };
 

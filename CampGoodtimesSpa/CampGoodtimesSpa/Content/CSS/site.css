@@ -326,4 +326,40 @@ body {
   max-width: 302px;
   vertical-align: middle;
 }
+#camps-container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 60px;
+}
+#camps-container .camp-info-container {
+  display: inline-block;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+#camps-container .camp-info-container img {
+  width: 600px;
+  vertical-align: top;
+}
+#camps-container .camp-info-container .img-left {
+  margin-right: 20px;
+}
+#camps-container .camp-info-container .img-right {
+  margin-left: 20px;
+}
+#camps-container .camp-info-container .camp-title-container {
+  display: inline-block;
+  width: 40%;
+  text-align: left;
+}
+#camps-container .camp-info-container .camp-title-container .attendance {
+  margin: 0;
+  padding: 0;
+}
+#camps-container .camp-info-container .camp-title-container a {
+  text-decoration: none;
+  background-color: #8566ff;
+  padding: 15px 30px;
+  color: #fff;
+}
 /*# sourceMappingURL=site.css.map */

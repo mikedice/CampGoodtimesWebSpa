@@ -1,0 +1,39 @@
+﻿<div id="page-body">
+    <img id="home-image" src="{{bannerImageUrl}}" alt="home banner image" />
+
+    <div ng-include="'/PartialViews/What/WhatNavBar.html'"></div>
+
+    <div class="news-loading-indicator" ng-show="!campsLoaded">
+        <img src="/Content/images/layout/goodtimes-loading.gif" alt="" />
+        <span>Loading Camps...</span>
+    </div>
+
+    <div id="camps-container">
+        <div ng-repeat="camp in campsList">
+            <div ng-switch on="camp.side">
+                <div class="camp-info-container" ng-switch-when="left">
+                    <img class="img-left" src="{{camp.BannerPicture}}" alt="">
+   
+                    <div class="camp-title-container">
+                        <p class="attendance">{{camp.Attendance}}</p>
+                        <h1 class ="title">{{camp.Title}}</h1>
+                        <p>{{camp.DateString}}</p>
+                        <p>{{camp.ShortDescription}}</p>
+                        <a href="learnMoreClicked(camp.Title)">Learn More</a>
+                    </div>
+                </div>
+                <div class="camp-info-container" ng-switch-when="right">
+                    <div class="camp-title-container">
+                        <p class="attendance">{{camp.Attendance}}</p>
+                        <h1 class="title">{{camp.Title}}</h1>
+                        <p>{{camp.DateString}}</p>
+                        <p>{{camp.ShortDescription}}</p>
+                        <a href="learnMoreClicked(camp.Title)">Learn More</a>
+                    </div>
+   
+                    <img class="img-right" src="{{camp.BannerPicture}}" alt="">
+               </div>
+            </div>
+        </div>
+    </div>
+</div>

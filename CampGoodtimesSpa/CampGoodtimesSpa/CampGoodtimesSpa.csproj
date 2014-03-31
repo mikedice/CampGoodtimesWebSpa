@@ -132,6 +132,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Sharepoint\Feeds\CampEventElement.cs" />
+    <Compile Include="Models\Sharepoint\Feeds\CampsElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\Employee.cs" />
     <Compile Include="Models\Sharepoint\Feeds\NewsFromTheDirectorElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\SponsorsFeedElement.cs" />
@@ -166,6 +167,10 @@
     <Content Include="Content\images\layout\transparentBackground.png" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="PartialViews\What\Camps.html" />
+    <Content Include="PartialViews\What\Events.html" />
+    <Content Include="PartialViews\What\Scholarships.html" />
+    <Content Include="PartialViews\What\WhatNavBar.html" />
     <Content Include="PartialViews\Who\Donors.html" />
     <Content Include="PartialViews\Who\History.html" />
     <Content Include="PartialViews\Who\Staff.html" />
@@ -177,13 +182,13 @@
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\Controllers\HomeViewController.js" />
     <Content Include="Scripts\Controllers\PageHeaderController.js" />
+    <Content Include="Scripts\Controllers\WhatController.js" />
     <Content Include="Scripts\Controllers\WhoController.js" />
-    <Content Include="Scripts\Factories\DonorsFactory.js" />
     <Content Include="Scripts\Factories\NewsItemFactory.js" />
     <Content Include="PartialViews\Home.html" />
     <Content Include="Scripts\Factories\SponsorsFactory.js" />
-    <Content Include="Scripts\Factories\StaffAndBoardFactory.js" />
-    <Content Include="Scripts\Factories\VolunteersFactory.js" />
+    <Content Include="Scripts\Factories\WhatFactory.js" />
+    <Content Include="Scripts\Factories\WhoFactory.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

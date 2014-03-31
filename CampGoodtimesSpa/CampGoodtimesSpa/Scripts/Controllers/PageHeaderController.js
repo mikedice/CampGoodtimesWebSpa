@@ -22,7 +22,7 @@ var PageHeaderController = (function () {
         };
 
         scope.whatWeDoClicked = function () {
-            window.alert("page header: what we do!");
+            location.path("/what")
         };
 
         scope.whoWeAreClicked = function () {

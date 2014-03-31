@@ -55,6 +55,12 @@ namespace CampGoodtimesSpa.Controllers
             return sharepointService.GetVolunteersAsync(url);
         }
 
+        [HttpGet]
+        public Task<IEnumerable<CampsElement>> Camps()
+        {
+            string url = ConfigurationManager.AppSettings["CampsFeed"];
+            return sharepointService.GetCampsAsync(url);
+        }
         //// GET api/api/5
         //public string Get(int id)
         //{
