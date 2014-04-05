@@ -11,6 +11,7 @@ namespace CampGoodtimesSpa
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.IgnoreRoute(""); // ignore the empty route so serving up default document index.html works
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
