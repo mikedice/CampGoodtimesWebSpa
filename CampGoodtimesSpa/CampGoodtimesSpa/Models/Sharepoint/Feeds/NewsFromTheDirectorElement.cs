@@ -9,11 +9,14 @@ namespace CampGoodtimesSpa.Models.Sharepoint.Feeds
     {
         public string Title { get; set; }
         public string Author { get; set; }
-        public string Description { get; set; }
+        public string ShortDescription { get; set; }
         public bool IsVisible { get; set; }
         public DateTime PublishedOnGmt { get; set; }
         public string EventDate { get; set; }
         public string EventImageSmall { get; set; }
         public string EventImageLarge { get; set; }
+        public string PostedBy { get; set; }
+        public int ArticleNumber { get; set; }
+        public string FullArticle { get; set; }
     }
 }

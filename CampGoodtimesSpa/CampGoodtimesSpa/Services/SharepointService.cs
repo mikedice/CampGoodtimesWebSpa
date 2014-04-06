@@ -133,11 +133,28 @@ namespace CampGoodtimesSpa.Services
             htmlDoc.LoadHtml(feedXml.Element("description").Value);
             var feedItem = new NewsFromTheDirectorElement();
 
-            var result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Content:']");
+            var result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='ShortDescription:']");
             if (result.Any())
             {
-                feedItem.Description = result.First().NextSibling.InnerText.Trim();
+                feedItem.ShortDescription = result.First().NextSibling.InnerText.Trim();
             }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='ArticleNumber:']");
+            if (result != null && result.Any())
+            {
+                int number;
+                if (int.TryParse(result.First().NextSibling.InnerText.Trim().ToLower(), out number))
+                {
+                    feedItem.ArticleNumber = number;
+                }
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='FullArticle:']");
+            if (result != null && result.Any())
+            {
+                feedItem.FullArticle = FixupHtml(result.First().ParentNode.SelectNodes("div").First().InnerHtml);
+            }
+
 
             result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Visible on Website:']");
             if (result.Any())
@@ -166,6 +183,12 @@ namespace CampGoodtimesSpa.Services
             if (result.Any())
             {
                 feedItem.EventDate = result.First().NextSibling.InnerText.Trim();
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='PostedBy:']");
+            if (result.Any())
+            {
+                feedItem.PostedBy = result.First().NextSibling.InnerText.Trim();
             }
             
             // optional fields
@@ -439,6 +462,31 @@ namespace CampGoodtimesSpa.Services
             }
 
             return feedItem;
+        }
+
+        private string FixupHtml(string html)
+        {
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(html);
+
+            var results = htmlDoc.DocumentNode.SelectNodes("//img");
+            if (results != null && results.Any())
+            {
+                foreach(var imgNode in results)
+                {
+                    string srcUrl = imgNode.Attributes["src"].Value;
+                    if (srcUrl != null)
+                    {
+                        if (srcUrl.StartsWith("/Lists/Photos"))
+                        {
+                            srcUrl = "https://campgoodtimes-public.sharepoint.com" + srcUrl;
+                            imgNode.Attributes["src"].Value = srcUrl;
+                        }
+                    }
+                }
+            }
+            string returnVal = htmlDoc.DocumentNode.OuterHtml;
+            return returnVal;
         }
     }
 }

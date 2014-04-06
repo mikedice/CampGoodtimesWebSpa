@@ -168,6 +168,8 @@
     <Content Include="Content\images\layout\transparentBackground.png" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="PartialViews\News\Article.html" />
+    <Content Include="PartialViews\News\News.html" />
     <Content Include="PartialViews\What\Camps.html" />
     <Content Include="PartialViews\What\Events.html" />
     <Content Include="PartialViews\What\Scholarships.html" />
@@ -182,6 +184,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\Controllers\HomeViewController.js" />
+    <Content Include="Scripts\Controllers\NewsController.js" />
     <Content Include="Scripts\Controllers\PageHeaderController.js" />
     <Content Include="Scripts\Controllers\WhatController.js" />
     <Content Include="Scripts\Controllers\WhoController.js" />

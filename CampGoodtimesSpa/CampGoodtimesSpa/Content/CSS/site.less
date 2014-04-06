@@ -16,6 +16,13 @@
     color: @boldFontColor;
 }
 
+.ReadMoreButton {
+    text-decoration: none;
+    background-color: @colorFourthPrimary;
+    padding: 15px 30px;
+    color: #fff;
+}
+
 /* Some default elements */
 h1 {
     .HeadingFonts(36px);
@@ -91,14 +98,12 @@ body {
 }
 
 #home-buttonbar {
-    background-color: @grayHeaderBanner;
+    background: url("/Content/images/layout/transparentBackground.png");
     text-align: center;
     height: 70px;
     position: relative;
     top: -70px;
     z-index: 100;
-    opacity: .65;
-    -moz-opacity: .65;
 
     ul {
         list-style-type: none;
@@ -135,14 +140,13 @@ body {
 
 
 #who-buttonbar {
-    background-color: @grayHeaderBanner;
+    background: url("/Content/images/layout/transparentBackground.png");
     text-align: center;
     height: 70px;
     position: relative;
     top: -70px;
     z-index: 100;
-    opacity: .65;
-    -moz-opacity: .65;
+
 
     ul {
         list-style-type: none;
@@ -435,10 +439,7 @@ body {
             }
 
             a {
-                text-decoration: none;
-                background-color: @colorFourthPrimary;
-                padding: 15px 30px;
-                color: #fff;
+                .ReadMoreButton
             }
         }
     }
@@ -446,16 +447,69 @@ body {
 
 #scholarships-content {
     a {
-        text-decoration: none;
-        background-color: @colorFourthPrimary;
-        padding: 15px 30px;
-        color: #fff;
+        .ReadMoreButton
     }
-    .anchor-aligner
-    {
-        width:100%;
-        text-align:center;
-        margin-top:30px;
-        margin-bottom:30px;
+
+    .anchor-aligner {
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+
+#news-page-content {
+    margin-top: 120px;
+    min-height: 800px;
+
+    #loading-indicator {
+        position: relative;
+        top: 300px;
+    }
+
+    #news-items-list {
+        width: 40%;
+        margin: auto;
+
+        .article-container {
+            margin-top: 120px;
+            margin-bottom: 120px;
+
+            .posted-by {
+                margin: 0;
+                font-weight: bold;
+                font-size: 22px;
+            }
+
+            .article-title {
+                margin-top: 10px;
+                marting-bottom: 50px;
+            }
+
+            a {
+                .ReadMoreButton;
+            }
+        }
+    }
+}
+
+#full-article {
+    padding-top: 120px;
+    width: 60%;
+    margin: auto;
+
+    .posted-by {
+        margin: 0;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .article-title {
+        margin-top: 10px;
+        marting-bottom: 50px;
+    }
+
+    #full-article-container {
     }
 }

@@ -18,11 +18,11 @@ var PageHeaderController = (function () {
         };
 
         scope.newsClicked = function () {
-            window.alert("page header: news!");
+            location.path("/news");
         };
 
         scope.whatWeDoClicked = function () {
-            location.path("/what")
+            location.path("/what");
         };
 
         scope.whoWeAreClicked = function () {

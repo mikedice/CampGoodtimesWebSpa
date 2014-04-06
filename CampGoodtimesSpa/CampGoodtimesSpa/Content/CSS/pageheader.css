@@ -27,15 +27,13 @@
   padding-right: 40px;
 }
 #page-header {
-  background-color: #adbcbc;
+  background: url("/Content/images/layout/transparentBackground.png");
   position: relative;
   top: 70px;
   width: 1280px;
   height: 70px;
   z-index: 100;
   margin: auto;
-  -moz-opacity: .65;
-  opacity: .65;
   display: table;
   /* The Good Times PRoject link left side of banner*/
   /* Nav links on right side of banner*/

@@ -10,6 +10,12 @@
   font-size: 22px;
   color: #a6b1cc;
 }
+.ReadMoreButton {
+  text-decoration: none;
+  background-color: #8566ff;
+  padding: 15px 30px;
+  color: #fff;
+}
 /* Some default elements */
 h1 {
   font-family: "proxima-nova";
@@ -90,14 +96,12 @@ body {
   line-height: 100px;
 }
 #home-buttonbar {
-  background-color: #adbcbc;
+  background: url("/Content/images/layout/transparentBackground.png");
   text-align: center;
   height: 70px;
   position: relative;
   top: -70px;
   z-index: 100;
-  opacity: .65;
-  -moz-opacity: .65;
 }
 #home-buttonbar ul {
   list-style-type: none;
@@ -130,14 +134,12 @@ body {
   opacity: .9;
 }
 #who-buttonbar {
-  background-color: #adbcbc;
+  background: url("/Content/images/layout/transparentBackground.png");
   text-align: center;
   height: 70px;
   position: relative;
   top: -70px;
   z-index: 100;
-  opacity: .65;
-  -moz-opacity: .65;
 }
 #who-buttonbar ul {
   list-style-type: none;
@@ -409,5 +411,50 @@ body {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+#news-page-content {
+  margin-top: 120px;
+  min-height: 800px;
+}
+#news-page-content #loading-indicator {
+  position: relative;
+  top: 300px;
+}
+#news-page-content #news-items-list {
+  width: 40%;
+  margin: auto;
+}
+#news-page-content #news-items-list .article-container {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+#news-page-content #news-items-list .article-container .posted-by {
+  margin: 0;
+  font-weight: bold;
+  font-size: 22px;
+}
+#news-page-content #news-items-list .article-container .article-title {
+  margin-top: 10px;
+  marting-bottom: 50px;
+}
+#news-page-content #news-items-list .article-container a {
+  text-decoration: none;
+  background-color: #8566ff;
+  padding: 15px 30px;
+  color: #fff;
+}
+#full-article {
+  padding-top: 120px;
+  width: 60%;
+  margin: auto;
+}
+#full-article .posted-by {
+  margin: 0;
+  font-weight: bold;
+  font-size: 22px;
+}
+#full-article .article-title {
+  margin-top: 10px;
+  marting-bottom: 50px;
 }
 /*# sourceMappingURL=site.css.map */

@@ -1,0 +1,15 @@
+﻿<div id="news-page-content">
+    <div id="loading-indicator" class="news-loading-indicator" ng-show="!newsPageItemsLoaded">
+        <img src="/Content/images/layout/goodtimes-loading.gif" alt="" />
+        <span>Loading News...</span>
+    </div>
+
+    <div id="news-items-list" ng-repeat="article in newsItems">
+        <div class="article-container">
+            <p class="posted-by">Posted by {{article.PostedBy}}</p>
+            <h1 class="article-title">{{article.Title}}</h1>
+            <p>{{article.ShortDescription}}</p>
+            <a href="" ng-click="readMore(article.ArticleNumber)">Read More</a>
+        </div>
+    </div>
+</div>

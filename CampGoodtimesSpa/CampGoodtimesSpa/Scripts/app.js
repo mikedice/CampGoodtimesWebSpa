@@ -3,7 +3,7 @@
 /// <reference path="angular-route.js" />
 
 // Configure SPA application
-var app = angular.module('GoodtimesApp', ['ngRoute', 'ngAnimate']);
+var app = angular.module('GoodtimesApp', ['ngRoute', 'ngAnimate', 'ngSanitize']);
 
 // Configure routing
 app.config(function ($routeProvider) {
@@ -27,6 +27,8 @@ app.config(function ($routeProvider) {
                 else if (p.tab == 'scholarships') { return '/PartialViews/What/Scholarships.html'; }
             }
         })
+        .when('/news', { controller: 'NewsController', templateUrl: '/PartialViews/News/News.html' })
+        .when('/news/:articleNumber', { controller: 'NewsController', templateUrl: '/PartialViews/News/Article.html' })
         .when('/what', { controller: 'WhatController', redirectTo: '/what/camps' })
         .otherwise({ redirectTo: '/' });
 });
@@ -51,4 +53,9 @@ app.controller(WhatController.Name, ['$scope',
                                     '$route',
                                     WhatFactory.Name,
                                     WhatController.Controller]);
+app.controller(NewsController.Name, ['$scope',
+                                    '$location',
+                                    '$route',
+                                    NewsItemFactory.Name,
+                                    NewsController.Controller])
 
