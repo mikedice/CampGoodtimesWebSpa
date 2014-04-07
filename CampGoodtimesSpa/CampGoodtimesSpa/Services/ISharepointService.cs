@@ -11,7 +11,6 @@ namespace CampGoodtimesSpa.Services
     public interface ISharepointService
     {
         Task<IEnumerable<NewsFromTheDirectorElement>> GetDirectorNewsFeedAsync(string newsFeedUrl);
-        Task<IEnumerable<CampEventElement>> GetCampEventsAsync(string newsFeedUrl);
         Task<IEnumerable<SponsorsFeedElement>> GetSponsorsAsync(string sponsorsFeedUrl);
         Task<IEnumerable<Employee>> GetStaffAsync(string staffFeedUrl);
         Task<IEnumerable<Employee>> GetBoardAsync(string boardFeedUrl);

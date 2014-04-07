@@ -131,7 +131,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Sharepoint\Feeds\CampEventElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\CampsElement.cs" />
     <Compile Include="Models\Sharepoint\Feeds\Employee.cs" />
     <Compile Include="Models\Sharepoint\Feeds\EventsElement.cs" />
@@ -171,6 +170,11 @@
     <Content Include="PartialViews\News\Article.html" />
     <Content Include="PartialViews\News\News.html" />
     <Content Include="PartialViews\What\Camps.html" />
+    <Content Include="PartialViews\What\CampsDetail.html" />
+    <Content Include="PartialViews\What\camps\goodtimes.html" />
+    <Content Include="PartialViews\What\camps\kayak.html" />
+    <Content Include="PartialViews\What\camps\ski.html" />
+    <Content Include="PartialViews\What\EventDetail.html" />
     <Content Include="PartialViews\What\Events.html" />
     <Content Include="PartialViews\What\Scholarships.html" />
     <Content Include="PartialViews\What\WhatNavBar.html" />

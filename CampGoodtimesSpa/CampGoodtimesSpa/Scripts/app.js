@@ -19,12 +19,25 @@ app.config(function ($routeProvider) {
             }
         })
         .when('/who', { controller: 'WhoController', redirectTo: '/who/history' })
-        .when('/what/:tab', {
+        .when('/what/:tab/:eventNumber?', {
             controller: 'WhatController',
             templateUrl: function (p) {
-                if (p.tab == 'camps') { return '/PartialViews/What/Camps.html'; }
-                else if (p.tab == 'events') { return '/PartialViews/What/Events.html'; }
-                else if (p.tab == 'scholarships') { return '/PartialViews/What/Scholarships.html'; }
+                if (p.eventNumber == null) {
+                    if (p.tab == 'camps') { return '/PartialViews/What/Camps.html'; }
+                    else if (p.tab == 'events') { return '/PartialViews/What/Events.html'; }
+                    else if (p.tab == 'scholarships') { return '/PartialViews/What/Scholarships.html'; }
+                }
+                else {
+                    if (p.eventNumber != null)
+                    {
+                        // either p is a number in which case it represents an event number
+                        // or it is a string that contains the camp title
+                        if (!isNaN(p.eventNumber)) {
+                            return '/PartialViews/What/EventDetail.html';
+                        }
+                        else { return '/PartialViews/What/CampsDetail.html'; }
+                    }
+                }
             }
         })
         .when('/news', { controller: 'NewsController', templateUrl: '/PartialViews/News/News.html' })

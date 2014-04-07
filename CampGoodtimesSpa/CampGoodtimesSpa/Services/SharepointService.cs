@@ -17,12 +17,10 @@ namespace CampGoodtimesSpa.Services
     {
         public Task<IEnumerable<NewsFromTheDirectorElement>> GetDirectorNewsFeedAsync(string newsFeedUrl)
         {
-            return GetFeedAsync(newsFeedUrl, ParseNewsFromTheDirectorFeedItem);
-        }
-
-        public Task<IEnumerable<CampEventElement>> GetCampEventsAsync(string eventsFeedUrl)
-        {
-            return GetFeedAsync(eventsFeedUrl, ParseCampEventItem);
+            return GetFeedAsync(newsFeedUrl, ParseNewsFromTheDirectorFeedItem).ContinueWith((r) =>
+                {
+                    return r.Result.Where(i => i.IsVisible).OrderBy(i => i.Order).AsEnumerable();
+                }); ;
         }
 
         public Task<IEnumerable<SponsorsFeedElement>> GetSponsorsAsync(string sponsorsFeedUrl)
@@ -56,7 +54,7 @@ namespace CampGoodtimesSpa.Services
 
         public Task<IEnumerable<CampsElement>> GetCampsAsync(string campsFeedUrl)
         {
-            return GetFeedAsync(campsFeedUrl, ParseCampsFeedItem).ContinueWith((completed) => 
+            return GetFeedAsync(campsFeedUrl, ParseCampsFeedItem).ContinueWith((completed) =>
             {
                 return completed.Result.Where(t => t.ShowOnWebsite).OrderBy(t => t.Order).AsEnumerable();
             });
@@ -155,6 +153,16 @@ namespace CampGoodtimesSpa.Services
                 feedItem.FullArticle = FixupHtml(result.First().ParentNode.SelectNodes("div").First().InnerHtml);
             }
 
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Order:']");
+            if (result != null && result.Any())
+            {
+                feedItem.Order = 9999; // put it at the back of the list by default;
+                int order;
+                if (int.TryParse(result.First().NextSibling.InnerText.Trim().ToLower(), out order))
+                {
+                    feedItem.Order = order;
+                }
+            }
 
             result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Visible on Website:']");
             if (result.Any())
@@ -190,7 +198,7 @@ namespace CampGoodtimesSpa.Services
             {
                 feedItem.PostedBy = result.First().NextSibling.InnerText.Trim();
             }
-            
+
             // optional fields
             result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='EventImageSmall:']");
             if (result != null && result.Any())
@@ -201,59 +209,6 @@ namespace CampGoodtimesSpa.Services
             if (result != null && result.Any())
             {
                 feedItem.EventImageLarge = result.First().ParentNode.SelectSingleNode("a").Attributes["href"].Value;
-            }
-            return feedItem;
-        }
-
-        private CampEventElement ParseCampEventItem(XElement feedXml)
-        {
-            var htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(feedXml.Element("description").Value);
-            var feedItem = new CampEventElement();
-
-            var result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='DetailsPageName:']");
-            if (result.Any())
-            {
-                feedItem.DetailsPageName = result.First().NextSibling.InnerText.Trim();
-            }
-
-            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='ShowOnWebSite:']");
-            if (result.Any())
-            {
-                feedItem.ShowOnWebsite = result.First().NextSibling.InnerText.Trim().ToLower().Equals("yes") ? true : false;
-            }
-
-            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Created:']");
-            if (result.Any())
-            {
-                feedItem.PublishedOnGmt = DateTime.Parse(result.First().NextSibling.InnerText.Trim());
-            }
-
-            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Created By:']");
-            if (result.Any())
-            {
-                feedItem.Author = result.First().NextSibling.InnerText.Trim();
-            }
-
-            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Title:']");
-            if (result.Any())
-            {
-                feedItem.Title = result.First().NextSibling.InnerText.Trim();
-            }
-            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='EventDate:']");
-            if (result.Any())
-            {
-                feedItem.EventDate = result.First().NextSibling.InnerText.Trim();
-            }
-            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='Short Description:']");
-            if (result.Any())
-            {
-                feedItem.ShortDescription = result.First().NextSibling.InnerText.Trim();
-            }
-            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='WelcomeTo:']");
-            if (result.Any())
-            {
-                feedItem.WelcomeTo = result.First().NextSibling.InnerText.Trim();
             }
             return feedItem;
         }
@@ -461,6 +416,21 @@ namespace CampGoodtimesSpa.Services
                 feedItem.ShowOnWebsite = result.First().NextSibling.InnerText.Trim().ToLower().Equals("yes") ? true : false;
             }
 
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='EventNumber:']");
+            if (result != null && result.Any())
+            {
+                int number;
+                if (int.TryParse(result.First().NextSibling.InnerText.Trim().ToLower(), out number))
+                {
+                    feedItem.EventNumber = number;
+                }
+            }
+
+            result = htmlDoc.DocumentNode.SelectNodes("div/b[text()='EventInformation:']");
+            if (result != null && result.Any())
+            {
+                feedItem.EventInformation = FixupHtml(result.First().ParentNode.SelectNodes("div").First().InnerHtml);
+            }
             return feedItem;
         }
 
@@ -472,7 +442,7 @@ namespace CampGoodtimesSpa.Services
             var results = htmlDoc.DocumentNode.SelectNodes("//img");
             if (results != null && results.Any())
             {
-                foreach(var imgNode in results)
+                foreach (var imgNode in results)
                 {
                     string srcUrl = imgNode.Attributes["src"].Value;
                     if (srcUrl != null)

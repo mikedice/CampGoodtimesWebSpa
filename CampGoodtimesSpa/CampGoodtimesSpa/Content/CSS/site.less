@@ -23,6 +23,21 @@
     color: #fff;
 }
 
+.ColorButtonFirst {
+    text-decoration: none;
+    background-color: @colorFirstPrimary;
+    padding: 15px 30px;
+    color: #fff;
+}
+
+.ColorButtonSecond {
+    text-decoration: none;
+    background-color: @colorSecondPrimary;
+    padding: 15px 30px;
+    color: #fff;
+}
+
+
 /* Some default elements */
 h1 {
     .HeadingFonts(36px);
@@ -445,6 +460,15 @@ body {
     }
 }
 
+#event-detail-container
+{
+    width:60%;
+    margin:auto;
+    img{
+        max-width: 100%;
+    }
+
+}
 #scholarships-content {
     a {
         .ReadMoreButton
@@ -511,5 +535,64 @@ body {
     }
 
     #full-article-container {
+    }
+}
+
+#goodtimes-page {
+    width: 50%;
+    margin: auto;
+}
+
+#goodtimes-page-buttons {
+    width: 50%;
+    margin: auto;
+    margin-top: 60px;
+    text-align: center;
+
+    a {
+        width: 300px;
+    }
+}
+
+.goodtimes-page-gray-banner {
+    background-color: @grayLight;
+    min-height: 120px;
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+    .inner-content {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+#goodtimes-page-table {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 60px;
+
+    th {
+        border-bottom: 1px solid @grayLight;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .padded-row {
+        td {
+            padding-top: 20px;
+        }
+    }
+
+    .thspanner {
+        width: 150px;
+    }
+
+    .tdspanner {
+        width: 150px;
     }
 }

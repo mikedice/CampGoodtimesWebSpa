@@ -19,7 +19,7 @@
                         <h1 class="title">{{event.Title}}</h1>
                         <p>{{event.DateString}}</p>
                         <p>{{event.ShortDescription}}</p>
-                        <a href="" ng-click="learnMoreClicked(event.Title)">Learn More</a>
+                        <a href="" ng-click="eventsLearnMoreClicked(event.EventNumber)">Learn More</a>
                     </div>
                 </div>
                 <div class="event-info-container" ng-switch-when="right">
@@ -28,7 +28,7 @@
                         <h1 class="title">{{event.Title}}</h1>
                         <p>{{event.DateString}}</p>
                         <p>{{event.ShortDescription}}</p>
-                        <a href="" ng-click="learnMoreClicked(event.Title)">Learn More</a>
+                        <a href="" ng-click="eventsLearnMoreClicked(event.EventNumber)">Learn More</a>
                     </div>
 
                     <img class="img-right" src="{{event.BannerPicture}}" alt="">

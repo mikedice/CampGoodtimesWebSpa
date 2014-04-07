@@ -16,6 +16,18 @@
   padding: 15px 30px;
   color: #fff;
 }
+.ColorButtonFirst {
+  text-decoration: none;
+  background-color: #df334b;
+  padding: 15px 30px;
+  color: #fff;
+}
+.ColorButtonSecond {
+  text-decoration: none;
+  background-color: #23c4bc;
+  padding: 15px 30px;
+  color: #fff;
+}
 /* Some default elements */
 h1 {
   font-family: "proxima-nova";
@@ -400,6 +412,13 @@ body {
   padding: 15px 30px;
   color: #fff;
 }
+#event-detail-container {
+  width: 60%;
+  margin: auto;
+}
+#event-detail-container img {
+  max-width: 100%;
+}
 #scholarships-content a {
   text-decoration: none;
   background-color: #8566ff;
@@ -456,5 +475,51 @@ body {
 #full-article .article-title {
   margin-top: 10px;
   marting-bottom: 50px;
+}
+#goodtimes-page {
+  width: 50%;
+  margin: auto;
+}
+#goodtimes-page-buttons {
+  width: 50%;
+  margin: auto;
+  margin-top: 60px;
+  text-align: center;
+}
+#goodtimes-page-buttons a {
+  width: 300px;
+}
+.goodtimes-page-gray-banner {
+  background-color: #eaeff9;
+  min-height: 120px;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.goodtimes-page-gray-banner .inner-content {
+  width: 50%;
+  margin: auto;
+}
+#goodtimes-page-table {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+#goodtimes-page-table th {
+  border-bottom: 1px solid #eaeff9;
+}
+#goodtimes-page-table td {
+  text-align: center;
+}
+#goodtimes-page-table .padded-row td {
+  padding-top: 20px;
+}
+#goodtimes-page-table .thspanner {
+  width: 150px;
+}
+#goodtimes-page-table .tdspanner {
+  width: 150px;
 }
 /*# sourceMappingURL=site.css.map */

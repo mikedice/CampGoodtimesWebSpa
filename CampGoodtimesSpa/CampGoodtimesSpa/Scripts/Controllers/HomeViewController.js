@@ -35,7 +35,7 @@ var HomeViewController = (function () {
 
             result.push(data[i]);
         }
-        result.reverse();
+
         return result;
     }
 
