@@ -162,11 +162,14 @@
     <Content Include="Content\images\layout\banner-placeholder3.png" />
     <Content Include="Content\images\layout\defaultnewsitem.png" />
     <Content Include="Content\images\layout\donor-banner1.png" />
+    <Content Include="Content\images\layout\Facebook_icon.png" />
     <Content Include="Content\images\layout\goodtimes-loading.gif" />
     <Content Include="Content\images\layout\goodtimes_logo_white_small.png" />
     <Content Include="Content\images\layout\transparentBackground.png" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="PartialViews\Connect.html" />
+    <Content Include="PartialViews\Donate.html" />
     <Content Include="PartialViews\News\Article.html" />
     <Content Include="PartialViews\News\News.html" />
     <Content Include="PartialViews\What\Camps.html" />
@@ -185,8 +188,10 @@
     <Content Include="PartialViews\Who\WhoNavBar.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\Controllers\BasicController.js" />
     <Content Include="Scripts\Controllers\HomeViewController.js" />
     <Content Include="Scripts\Controllers\NewsController.js" />
     <Content Include="Scripts\Controllers\PageHeaderController.js" />

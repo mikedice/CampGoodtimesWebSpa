@@ -28,8 +28,7 @@ app.config(function ($routeProvider) {
                     else if (p.tab == 'scholarships') { return '/PartialViews/What/Scholarships.html'; }
                 }
                 else {
-                    if (p.eventNumber != null)
-                    {
+                    if (p.eventNumber != null) {
                         // either p is a number in which case it represents an event number
                         // or it is a string that contains the camp title
                         if (!isNaN(p.eventNumber)) {
@@ -43,6 +42,8 @@ app.config(function ($routeProvider) {
         .when('/news', { controller: 'NewsController', templateUrl: '/PartialViews/News/News.html' })
         .when('/news/:articleNumber', { controller: 'NewsController', templateUrl: '/PartialViews/News/Article.html' })
         .when('/what', { controller: 'WhatController', redirectTo: '/what/camps' })
+        .when('/connect', { controller: 'BasicController', templateUrl: '/PartialViews/Connect.html' })
+        .when('/donate', { controller: 'BasicController', templateUrl: '/PartialViews/Donate.html' })
         .otherwise({ redirectTo: '/' });
 });
 
@@ -53,22 +54,34 @@ app.factory(SponsorsFactory.Name, SponsorsFactory.Factory);
 app.factory(WhatFactory.Name, WhatFactory.Factory);
 
 // Inject controllers
-app.controller(HomeViewController.Name, ['$scope', NewsItemFactory.Name, SponsorsFactory.Name, HomeViewController.Controller]);
-app.controller(PageHeaderController.Name, ['$scope', '$location', PageHeaderController.Controller]);
-app.controller(WhoController.Name, ['$scope',
-                                    '$location',
-                                    '$route',
-                                    WhoFactory.Name,
-                                    SponsorsFactory.Name,
-                                    WhoController.Controller]);
-app.controller(WhatController.Name, ['$scope',
-                                    '$location',
-                                    '$route',
-                                    WhatFactory.Name,
-                                    WhatController.Controller]);
-app.controller(NewsController.Name, ['$scope',
-                                    '$location',
-                                    '$route',
-                                    NewsItemFactory.Name,
-                                    NewsController.Controller])
+app.controller(BasicController.Name, BasicController.Controller);
+app.controller(HomeViewController.Name, [
+    '$scope',
+    NewsItemFactory.Name,
+    SponsorsFactory.Name,
+    HomeViewController.Controller]);
+app.controller(PageHeaderController.Name, [
+    '$scope',
+    '$location',
+    PageHeaderController.Controller]);
+app.controller(WhoController.Name, [
+    '$scope',
+    '$location',
+    '$route',
+    WhoFactory.Name,
+    SponsorsFactory.Name,
+    WhoController.Controller]);
+app.controller(WhatController.Name, [
+    '$scope',
+    '$location',
+    '$route',
+    WhatFactory.Name,
+    WhatController.Controller]);
+app.controller(NewsController.Name, [
+    '$scope',
+    '$location',
+    '$route',
+    NewsItemFactory.Name,
+    NewsController.Controller
+]);
 

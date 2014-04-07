@@ -10,11 +10,11 @@ var PageHeaderController = (function () {
     function init(scope, location) {
         // Click handlers for UI elements
         scope.donateClicked = function () {
-            window.alert("page header: donate!");
+            location.path("/donate");
         };
 
         scope.connectClicked = function () {
-            window.alert("page header: connect!");
+            location.path("/connect");
         };
 
         scope.newsClicked = function () {

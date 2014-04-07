@@ -522,4 +522,43 @@ body {
 #goodtimes-page-table .tdspanner {
   width: 150px;
 }
+#connect-container {
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+#connect-container #connect-picture {
+  display: inline-block;
+  background-color: #eaeff9;
+  min-height: 400px;
+  min-width: 400px;
+  vertical-align: top;
+  margin-right: 30px;
+  color: #3c3f4a;
+}
+#connect-container #connect-content {
+  display: inline-block;
+  min-height: 100px;
+  vertical-align: top;
+  text-align: left;
+}
+#connect-container #connect-content a {
+  text-decoration: none;
+}
+#connect-container #connect-content h1 {
+  margin: 0;
+  padding: 0;
+}
+#connect-container #connect-content p {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+#connect-container #connect-content .no-margin {
+  margin: 0;
+}
+#connect-container #connect-content img {
+  max-width: 50px;
+}
 /*# sourceMappingURL=site.css.map */
