@@ -169,9 +169,14 @@
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
     <Content Include="PartialViews\Connect.html" />
-    <Content Include="PartialViews\Donate.html" />
+    <Content Include="PartialViews\Donate\DonateNavBar.html" />
+    <Content Include="PartialViews\Donate\InKind.html" />
+    <Content Include="PartialViews\Donate\Monetary.html" />
     <Content Include="PartialViews\News\Article.html" />
     <Content Include="PartialViews\News\News.html" />
+    <Content Include="PartialViews\Volunteer\CampEvent.html" />
+    <Content Include="PartialViews\Volunteer\VolunteerNavBar.html" />
+    <Content Include="PartialViews\Volunteer\YearRound.html" />
     <Content Include="PartialViews\What\Camps.html" />
     <Content Include="PartialViews\What\CampsDetail.html" />
     <Content Include="PartialViews\What\camps\goodtimes.html" />
@@ -192,9 +197,11 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\Controllers\BasicController.js" />
+    <Content Include="Scripts\Controllers\DonateController.js" />
     <Content Include="Scripts\Controllers\HomeViewController.js" />
     <Content Include="Scripts\Controllers\NewsController.js" />
     <Content Include="Scripts\Controllers\PageHeaderController.js" />
+    <Content Include="Scripts\Controllers\VolunteerController.js" />
     <Content Include="Scripts\Controllers\WhatController.js" />
     <Content Include="Scripts\Controllers\WhoController.js" />
     <Content Include="Scripts\Factories\NewsItemFactory.js" />

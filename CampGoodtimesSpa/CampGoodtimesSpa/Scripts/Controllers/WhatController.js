@@ -88,7 +88,7 @@
         }
 
         scope.eventsLearnMoreClicked = function(eventNumber) {
-            location.path("/what/events/" + eventNumber)
+            location.path("/what/events/" + eventNumber);
         }
 
         scope.campsLearnMoreClicked = function(camp)
@@ -110,19 +110,16 @@
             window.alert("Become a kayak camper");
         }
 
-        scope.kayakVolunteer = function()
-        {
-            window.alert("Volunteer at kayak camp")
+        scope.kayakVolunteer = function() {
+            window.alert("Volunteer at kayak camp");
         }
 
-        scope.skiBecomeACamper = function()
-        {
-            window.alert("Become a ski camp camper")
+        scope.skiBecomeACamper = function() {
+            window.alert("Become a ski camp camper");
         }
 
-        scope.skiVolunteer = function()
-        {
-            window.alert("Volunteer at ski camp")
+        scope.skiVolunteer = function() {
+            window.alert("Volunteer at ski camp");
         }
 
         // The active tab route parameter is defined in the 

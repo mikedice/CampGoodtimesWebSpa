@@ -43,7 +43,20 @@ app.config(function ($routeProvider) {
         .when('/news/:articleNumber', { controller: 'NewsController', templateUrl: '/PartialViews/News/Article.html' })
         .when('/what', { controller: 'WhatController', redirectTo: '/what/camps' })
         .when('/connect', { controller: 'BasicController', templateUrl: '/PartialViews/Connect.html' })
-        .when('/donate', { controller: 'BasicController', templateUrl: '/PartialViews/Donate.html' })
+        .when('/donate/:tab', {
+            controller: 'DonateController', templateUrl: function (p) {
+                if (p.tab == 'monetary') { return '/PartialViews/Donate/Monetary.html'; }
+                else if (p.tab == 'inkind') { return '/PartialViews/Donate/InKind.html'; }
+            }
+        })
+        .when('/donate', { redirectTo: '/donate/monetary' })
+        .when('/volunteer/:tab', {
+                    controller: 'VolunteerController', templateUrl: function (p) {
+                        if (p.tab == 'campevent') { return '/PartialViews/Volunteer/CampEvent.html'; }
+                        else if (p.tab == 'yearround') { return '/PartialViews/Volunteer/YearRound.html'; }
+                    }
+                })
+        .when('/volunteer', { redirectTo: '/volunteer/campevent' })
         .otherwise({ redirectTo: '/' });
 });
 
@@ -55,8 +68,19 @@ app.factory(WhatFactory.Name, WhatFactory.Factory);
 
 // Inject controllers
 app.controller(BasicController.Name, BasicController.Controller);
+app.controller(DonateController.Name, [
+    '$scope',
+    '$location',
+    '$route',
+    DonateController.Controller]);
+app.controller(VolunteerController.Name, [
+    '$scope',
+    '$location',
+    '$route',
+    VolunteerController.Controller]);
 app.controller(HomeViewController.Name, [
     '$scope',
+    '$location',
     NewsItemFactory.Name,
     SponsorsFactory.Name,
     HomeViewController.Controller]);

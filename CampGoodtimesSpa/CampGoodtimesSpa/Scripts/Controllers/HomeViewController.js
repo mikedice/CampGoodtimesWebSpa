@@ -40,7 +40,7 @@ var HomeViewController = (function () {
     }
 
     // Initialization
-    function init(scope, newsItemFactory, sponsorsFactory) {
+    function init(scope, location, newsItemFactory, sponsorsFactory) {
         scope.newsItemsLoaded = false; // loading indicator variable
 
         selectBannerImage(scope);
@@ -65,22 +65,22 @@ var HomeViewController = (function () {
 
         // click handlers from UI elements
         scope.becomeAVolunteerClicked = function () {
-            window.alert("home partial: volunteer!");
+            location.path('/volunteer');
         };
 
         scope.becomeACamperClicked = function () {
-            window.alert("home partial: camper!");
+            location.path('/what/camps');
         };
 
         scope.donateClicked = function () {
-            window.alert("home partial: donate!");
+            location.path('/donate');
         };
     }
 
     return {
         Name: 'HomeViewController',
-        Controller: function ($scope, newsItemFactory, sponsorsFactory) {
-            init($scope, newsItemFactory, sponsorsFactory);
+        Controller: function ($scope, $location, newsItemFactory, sponsorsFactory) {
+            init($scope, $location, newsItemFactory, sponsorsFactory);
         }
     };
 
