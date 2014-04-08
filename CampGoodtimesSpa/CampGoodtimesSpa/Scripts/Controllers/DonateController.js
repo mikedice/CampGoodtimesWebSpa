@@ -22,6 +22,9 @@ var DonateController = (function () {
         scope.inKindClicked = function() {
             location.path("/donate/inkind");
         }
+        scope.donateClicked = function(type) {
+            window.alert(type);
+        }
 
         // The active tab route parameter is defined in the 
         // app route configuration

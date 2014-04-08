@@ -22,7 +22,9 @@ var VolunteerController = (function () {
         scope.yearRoundClicked = function () {
             location.path("volunteer/yearround");
         }
-
+        scope.volunteerClicked = function (type) {
+            window.alert(type);
+        }
         // The active tab route parameter is defined in the 
         // app route configuration
         scope.activeTab = route.current.params['tab'];
