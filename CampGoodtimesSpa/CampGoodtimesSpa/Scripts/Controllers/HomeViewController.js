@@ -27,7 +27,8 @@ var HomeViewController = (function () {
     // image URL
     function processNewsItems(data) {
         var result = [];
-        for (var i = 0; i < 3; i++) {
+        var len = Math.min(data.length, 3);
+        for (var i = 0; i < len; i++) {
             // if the EventImageUrl wasn't specified we should set it to the default
             if (!data[i].hasOwnProperty("EventImageSmall") || data[i].EventImageSmall == null) {
                 data[i]["EventImageSmall"] = "/Content/images/layout/defaultnewsitem.png";
