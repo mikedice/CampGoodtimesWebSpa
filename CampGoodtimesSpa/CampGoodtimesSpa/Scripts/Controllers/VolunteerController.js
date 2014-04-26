@@ -3,9 +3,9 @@ var VolunteerController = (function () {
 
     // default banner images
     var defaultBannerImages = [
-        "/Content/images/layout/banner-placeholder1.png",
-        "/Content/images/layout/banner-placeholder2.png",
-        "/Content/images/layout/banner-placeholder3.png"
+        "/Content/images/layout/banner_staff_guys.JPG",
+        "/Content/images/layout/banner_staff_q.JPG",
+        "/Content/images/layout/banner_staff_act.JPG"
     ];
 
     function selectBannerImage(scope) {
