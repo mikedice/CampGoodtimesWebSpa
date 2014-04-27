@@ -19,20 +19,21 @@
         <span>Loading News...</span>
     </div>
 
-    <div id="home-news-articles-container">
-        <div class="news-row">
-            <div class="news-cell" ng-repeat="newsItem in newsItems"><img src="{{newsItem.EventImageSmall}}"></div>
-        </div>
+    <div id="home-news-article-container">
+        <div id="home-news-articles-table">
+            <div class="news-row">
+                <div class="news-cell" ng-repeat="newsItem in newsItems"><img src="{{newsItem.EventImageSmall}}"></div>
+            </div>
 
-        <div class="news-row">
-            <div class="news-cell" ng-repeat="newsItem in newsItems"><h3 class="news-title">{{newsItem.Title}}</h3></div>
-        </div>
+            <div class="news-row">
+                <div class="news-cell" ng-repeat="newsItem in newsItems"><h3 class="news-title">{{newsItem.Title}}</h3></div>
+            </div>
 
-        <div class="news-row">
-            <div class="news-cell" ng-repeat="newsItem in newsItems"><p class="news-description">{{newsItem.ShortDescription}}</p></div>
+            <div class="news-row">
+                <div class="news-cell" ng-repeat="newsItem in newsItems"><p class="news-description" ng-bind-html="newsItem.ShortDescription"></p></div>
+            </div>
         </div>
     </div>
-
     <div id="home-sponsors-container">
         <div id="caption">We <span id="home-heart">&hearts;</span> Our Sponsors</div>
         <div id="imagebar"><img ng-repeat="sponsorItem in sponsorsList" src="{{sponsorItem.SponsorImageUrlSmall}}" alt="" /></div>

@@ -198,16 +198,18 @@ body {
   -moz-opacity: .9;
   opacity: .9;
 }
-#home-news-articles-container {
-  display: table;
+#home-news-article-container {
   width: 80%;
   margin: auto;
+}
+#home-news-articles-table {
+  display: table;
 }
 .news-row {
   display: table-row;
 }
 .news-cell {
-  width: 300px;
+  max-width: 300px;
   display: table-cell;
 }
 .news-title {

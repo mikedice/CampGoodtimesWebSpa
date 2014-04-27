@@ -1,6 +1,5 @@
 ﻿var NewsController = (function () {
 
-
     function SetCurrentArticle(scope, data, articleNumber)
     {
         for (var i = 0; i < data.length; i++)
