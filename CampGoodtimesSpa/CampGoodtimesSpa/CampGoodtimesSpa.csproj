@@ -157,14 +157,27 @@
     <Content Include="Content\CSS\site.css">
       <DependentUpon>site.less</DependentUpon>
     </Content>
+    <Content Include="Content\images\layout\banner_staff_act.JPG" />
+    <Content Include="Content\images\layout\banner-gauntlet_2013.jpg" />
     <Content Include="Content\images\layout\banner-placeholder1.png" />
     <Content Include="Content\images\layout\banner-placeholder2.png" />
     <Content Include="Content\images\layout\banner-placeholder3.png" />
+    <Content Include="Content\images\layout\banner_backs_2013.JPG" />
+    <Content Include="Content\images\layout\banner_girls_2013.JPG" />
+    <Content Include="Content\images\layout\banner_staff_gaunt.JPG" />
+    <Content Include="Content\images\layout\banner_staff_guys.JPG" />
+    <Content Include="Content\images\layout\banner_staff_q.JPG" />
+    <Content Include="Content\images\layout\banner_superhero_2013.jpg" />
+    <Content Include="Content\images\layout\banner_uke.JPG" />
     <Content Include="Content\images\layout\defaultnewsitem.png" />
     <Content Include="Content\images\layout\donor-banner1.png" />
     <Content Include="Content\images\layout\Facebook_icon.png" />
     <Content Include="Content\images\layout\goodtimes-loading.gif" />
     <Content Include="Content\images\layout\goodtimes_logo_white_small.png" />
+    <Content Include="Content\images\layout\social\facebook.png" />
+    <Content Include="Content\images\layout\social\tumblr.png" />
+    <Content Include="Content\images\layout\social\twitter.png" />
+    <Content Include="Content\images\layout\social\youtube.png" />
     <Content Include="Content\images\layout\transparentBackground.png" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
@@ -264,6 +277,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

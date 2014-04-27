@@ -11,9 +11,9 @@ var HomeViewController = (function () {
 
     // default banner images
     var defaultBannerImages = [
-        "/Content/images/layout/banner-placeholder1.png",
-        "/Content/images/layout/banner-placeholder2.png",
-        "/Content/images/layout/banner-placeholder3.png"
+        "/Content/images/layout/banner_girls_2013.JPG",
+        "/Content/images/layout/banner-gauntlet_2013.jpg",
+        "/Content/images/layout/banner_backs_2013.JPG"
     ];
 
     function selectBannerImage(scope) {
