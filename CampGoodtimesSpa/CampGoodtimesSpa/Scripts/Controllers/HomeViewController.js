@@ -8,7 +8,6 @@
 //   newsItemsLoaded: a flag that indicates the loading spinner can stop being shown in the UI
 //   bannerImageUrl: a randomly selected banner image to show at the top of the home UI.
 var HomeViewController = (function () {
-
     // default banner images
     var defaultBannerImages = [
         "/Content/images/layout/banner_girls_2013.JPG",
@@ -27,23 +26,34 @@ var HomeViewController = (function () {
     // image URL
     function processNewsItems(data) {
         var result = [];
+
         var len = Math.min(data.length, 3);
-        for (var i = 0; i < len; i++) {
-            // if the EventImageUrl wasn't specified we should set it to the default
-            if (!data[i].hasOwnProperty("EventImageSmall") || data[i].EventImageSmall == null) {
-                data[i]["EventImageSmall"] = "/Content/images/layout/defaultnewsitem.png";
-            }
+        if (len == 1)
+        {
+            result.push({ EventImageSmall: null, Title: "", ShortDescription: "", placeholder:true});
+            result.push(data[0]);
+            result.push({ EventImageSmall: null, Title: "", ShortDescription: "", placeholder: true });
 
-            result.push(data[i]);
         }
-
+        else if (len == 2)
+        {
+            result.push(data[0]);
+            result.push(data[1]);
+            result.push({ EventImageSmall: null, Title: "", ShortDescription: "", placeholder: true });
+        }
+        else if (len == 3)
+        {
+            result.push(data[0]);
+            result.push(data[1]);
+            result.push(data[2]);
+        }
         return result;
     }
 
     // Initialization
     function init(scope, location, newsItemFactory, sponsorsFactory) {
         scope.newsItemsLoaded = false; // loading indicator variable
-
+        scope.readMore = function (articleNumber) { location.path('news/' + articleNumber) }
         selectBannerImage(scope);
 
         newsItemFactory.getNewItems()

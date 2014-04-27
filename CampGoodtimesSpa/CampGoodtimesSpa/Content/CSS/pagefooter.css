@@ -20,6 +20,10 @@
   line-height: 120px;
   background-color: #474b59;
 }
+#footer-sociallinks img {
+  position: relative;
+  top: 30px;
+}
 #footer-signature {
   height: 30px;
   line-height: 30px;

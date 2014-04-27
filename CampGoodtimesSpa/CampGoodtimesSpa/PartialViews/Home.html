@@ -8,7 +8,6 @@
             <li><a href="" ng-click="becomeAVolunteerClicked()">Volunteer!</a></li>
         </ul>
     </div>
-
     <div class="news-title-container">
         <div class="news-bullet-left">&#9679;</div>
         <div class="news-heading">Some Good News</div>
@@ -18,20 +17,21 @@
         <img src="/Content/images/layout/goodtimes-loading.gif" alt="" />
         <span>Loading News...</span>
     </div>
+    <div id="home-news-articles-table">
+        <div class="news-row">
+            <div class="news-cell" ng-repeat="newsItem in newsItems"><img src="{{newsItem.EventImageSmall}}"></div>
+        </div>
 
-    <div id="home-news-article-container">
-        <div id="home-news-articles-table">
-            <div class="news-row">
-                <div class="news-cell" ng-repeat="newsItem in newsItems"><img src="{{newsItem.EventImageSmall}}"></div>
-            </div>
+        <div class="news-row">
+            <div class="news-cell" ng-repeat="newsItem in newsItems"><h3 class="news-title">{{newsItem.Title}}</h3></div>
+        </div>
 
-            <div class="news-row">
-                <div class="news-cell" ng-repeat="newsItem in newsItems"><h3 class="news-title">{{newsItem.Title}}</h3></div>
-            </div>
+        <div class="news-row">
+            <div class="news-cell" ng-repeat="newsItem in newsItems"><p class="news-description" ng-bind-html="newsItem.ShortDescription"></p></div>
+        </div>
 
-            <div class="news-row">
-                <div class="news-cell" ng-repeat="newsItem in newsItems"><p class="news-description" ng-bind-html="newsItem.ShortDescription"></p></div>
-            </div>
+        <div class="news-row">
+            <div class="news-cell" ng-repeat="newsItem in newsItems"><a class="ReadMoreButton" href="" ng-hide="newsItem.placeholder" ng-click="readMore(newsItem.ArticleNumber)">Read More</a></div>
         </div>
     </div>
     <div id="home-sponsors-container">
