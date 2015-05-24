@@ -39,19 +39,19 @@ namespace CampGoodtimesSpa.Models.Services
                     {
                         var el = new Person();
                         el.Id = ReadDataInt32(reader, 0);
-                        el.PersonType = ReadDataString(reader, 0);
-                        el.CreatedOn = ReadDataDateTime(reader, 0);
-                        el.CreatedBy = ReadDataString(reader, 0);
-                        el.ModifiedOn = ReadDataDateTime(reader, 0);
-                        el.ModifiedBy = ReadDataString(reader, 0);
-                        el.DeletedOn = ReadDataDateTime(reader, 0);
-                        el.DeletedBy = ReadDataString(reader, 0);
-                        el.Name = ReadDataString(reader, 0);
-                        el.VisibleOnWebsite = ReadDataBool(reader, 0);
-                        el.ImageSmall = ReadDataString(reader, 0);
-                        el.ImageLarge = ReadDataString(reader, 0);
-                        el.Title = ReadDataString(reader, 0);
-                        el.Order = ReadDataInt32(reader, 0);
+                        el.PersonType = ReadDataString(reader, 1);
+                        el.CreatedOn = ReadDataDateTime(reader, 2);
+                        el.CreatedBy = ReadDataString(reader, 3);
+                        el.ModifiedOn = ReadDataDateTime(reader, 4);
+                        el.ModifiedBy = ReadDataString(reader, 5);
+                        el.DeletedOn = ReadDataDateTime(reader, 6);
+                        el.DeletedBy = ReadDataString(reader, 7);
+                        el.Name = ReadDataString(reader, 8);
+                        el.VisibleOnWebsite = ReadDataBool(reader, 9);
+                        el.ImageSmall = ReadDataString(reader, 10);
+                        el.ImageLarge = ReadDataString(reader, 11);
+                        el.Title = ReadDataString(reader, 12);
+                        el.Order = ReadDataInt32(reader, 13);
                         result.Add(el);
                     }
                 }
@@ -149,22 +149,22 @@ namespace CampGoodtimesSpa.Models.Services
                     {
                         var el = new Article();
                         el.Id = ReadDataInt32(reader, 0);
-                        el.ArticleType = ReadDataString(reader, 0); 
-                        el.CreatedOn = ReadDataDateTime(reader, 0);
-                        el.CreatedBy = ReadDataString(reader, 0); 
-                        el.ModifiedOn = ReadDataDateTime(reader, 0);
-                        el.ModifiedBy = ReadDataString(reader, 0);
-                        el.DeletedOn = ReadDataDateTime(reader, 0);
-                        el.DeletedBy = ReadDataString(reader, 0);
-                        el.Title = ReadDataString(reader, 0);
-                        el.ShortDescription = ReadDataString(reader, 0);
-                        el.Content = ReadDataString(reader, 0);
-                        el.Attendance = ReadDataString(reader, 0);
-                        el.DateString = ReadDataString(reader, 0);
-                        el.ImageSmall = ReadDataString(reader, 0);
-                        el.ImageLarge = ReadDataString(reader, 0); 
-                        el.ShowOnWebsite = ReadDataBool(reader, 0);
-                        el.Order = ReadDataInt32(reader, 0);
+                        el.ArticleType = ReadDataString(reader, 1); 
+                        el.CreatedOn = ReadDataDateTime(reader, 2);
+                        el.CreatedBy = ReadDataString(reader, 3); 
+                        el.ModifiedOn = ReadDataDateTime(reader, 4);
+                        el.ModifiedBy = ReadDataString(reader, 5);
+                        el.DeletedOn = ReadDataDateTime(reader, 6);
+                        el.DeletedBy = ReadDataString(reader, 7);
+                        el.Title = ReadDataString(reader, 8);
+                        el.ShortDescription = ReadDataString(reader, 9);
+                        el.Content = ReadDataString(reader, 10);
+                        el.Attendance = ReadDataString(reader, 11);
+                        el.DateString = ReadDataString(reader, 12);
+                        el.ImageSmall = ReadDataString(reader, 13);
+                        el.ImageLarge = ReadDataString(reader, 14); 
+                        el.ShowOnWebsite = ReadDataBool(reader, 15);
+                        el.Order = ReadDataInt32(reader, 16);
                         result.Add(el);
                     }
                 }
@@ -270,9 +270,9 @@ namespace CampGoodtimesSpa.Models.Services
                         el.ModifiedBy = ReadDataString(reader, 4);
                         el.DeletedOn = ReadDataDateTime(reader, 5);
                         el.DeletedBy = ReadDataString(reader, 6);
-                        el.DonationDate = ReadDataDateTime(reader, 1);
-                        el.Giver = ReadDataString(reader, 2);
-                        el.InHonorOf = ReadDataString(reader, 3);
+                        el.DonationDate = ReadDataDateTime(reader, 7);
+                        el.Giver = ReadDataString(reader, 8);
+                        el.InHonorOf = ReadDataString(reader, 9);
                         result.Add(el);
                     }
                 }

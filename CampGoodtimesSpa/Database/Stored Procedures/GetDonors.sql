@@ -2,17 +2,14 @@
 AS
     SELECT d.Id,
         d.CreatedOn,
-        dcb.UserName as CreatedBy,
+        (select gt.users.UserName from gt.Users where gt.Users.Id = d.CreatedBy) as 'CreatedBy',
         d.ModifiedOn,
-        dmb.UserName as ModifiedBy,
+        (select gt.users.UserName from gt.Users where gt.Users.Id = d.ModifiedBy) as 'ModifedBy',
         d.DeletedOn,
-        dcb.UserName as DeletedBy,
+        (select gt.users.UserName from gt.Users where gt.Users.Id = d.DeletedBy) as 'DeletedBy',
         d.DonationDate,
         d.Giver,
         d.InHonorOf
     FROM gt.Donors d
-        join [gt].[Users] dcb on d.CreatedBy = dcb.Id
-        join [gt].[Users] dmb on d.ModifiedBy = dmb.Id
-        join [gt].[Users] ddb on d.DeletedBy = ddb.Id
         where d.DeletedOn is null
 RETURN 0

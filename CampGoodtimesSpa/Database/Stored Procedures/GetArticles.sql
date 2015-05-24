@@ -4,11 +4,11 @@ AS
     SELECT a.Id,
         at.Name as ArticleType,
         a.CreatedOn,
-        ucb.UserName as CreatedBy,
+        (select gt.users.UserName from gt.Users where gt.Users.Id = a.CreatedBy) as 'CreatedBy',
         a.ModifiedOn,
-        umb.UserName as ModifiedBy,
+		(select gt.users.UserName from gt.Users where gt.Users.Id = a.ModifiedBy) as 'ModifedBy',
         a.DeletedOn,
-        udb.UserName as DeletedBy,
+		(select gt.users.UserName from gt.Users where gt.Users.Id = a.DeletedBy) as 'DeletedBy',
         a.Title,
         a.ShortDescription,
         a.Content,
@@ -20,9 +20,6 @@ AS
         a.[Order]
  from [gt].[Article] a
     join [gt].[ArticleTypeEnum] at on a.ArticleType = at.Id
-    join [gt].[Users] ucb on a.CreatedBy = ucb.Id
-    join [gt].[Users] umb on a.ModifiedBy = umb.Id
-    join [gt].[Users] udb on a.DeletedBy = udb.Id
     where a.ArticleType = @articleType and a.DeletedBy is null
 
 RETURN 0

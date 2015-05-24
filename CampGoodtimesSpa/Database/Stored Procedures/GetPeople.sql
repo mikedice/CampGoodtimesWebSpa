@@ -4,11 +4,11 @@ AS
     SELECT  p.[Id],
             pt.Name as PersonType,
             p.CreatedOn,
-            ucb.UserName as CreatedBy,
+            (select gt.users.UserName from gt.Users where gt.Users.Id = p.CreatedBy) as 'CreatedBy',
             p.ModifiedOn,
-            umb.UserName as ModifiedBy,
+            (select gt.users.UserName from gt.Users where gt.Users.Id = p.ModifiedBy) as 'ModifedBy',
             p.DeletedOn,
-            udb.UserName as DeletedBy,
+            (select gt.users.UserName from gt.Users where gt.Users.Id = p.DeletedBy) as 'DeletedBy',
             p.[Name],
             p.VisibleOnWebsite,
             p.ImageSmall,
@@ -17,8 +17,5 @@ AS
             p.[Order]
      FROM [gt].[Person] p 
         join gt.PersonTypeEnum pt on p.PersonType = pt.Id
-        join gt.Users ucb on p.CreatedBy = ucb.Id
-        join gt.Users umb on p.ModifiedBy = umb.Id
-        join gt.Users udb on p.ModifiedBy = udb.Id
         where p.[PersonType]=@personType  and p.DeletedOn is null
 RETURN 0

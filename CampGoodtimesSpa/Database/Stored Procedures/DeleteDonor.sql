@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [gt].[DeleteDonor]
     @donorId int,
-    @userName int
+    @userName nvarchar(128)
 AS
     if @donorId is null return;
 
