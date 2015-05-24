@@ -6,20 +6,20 @@ using System.Web.Mvc;
 using System.Web.Http.Controllers;
 using System.Web.Http;
 using Microsoft.Practices.Unity;
-using CampGoodtimesSpa.Services;
-using CampGoodtimesSpa.Controllers;
+using CampGoodtimesSpa.Models.Services;
+using CampGoodtimesSpa.Models.Controllers;
 
-namespace CampGoodtimesSpa
+namespace CampGoodtimesSpa.Models
 {
     public static class ServiceConfig
     {
         public static void RegisterServices(HttpConfiguration config)
         {
             IUnityContainer container = new UnityContainer();
-
-            container.RegisterType<ISharepointService, SharepointService>();
+            container.RegisterType<ICampData, DatabaseService>();
+            container.RegisterType<IUserData, DatabaseService>();
+            container.RegisterType<ISignInService, SignInService>();
             container.RegisterType<IHttpController, DataController>();
-
             config.DependencyResolver = new UnityDependencyResolver(container);
         }
     }

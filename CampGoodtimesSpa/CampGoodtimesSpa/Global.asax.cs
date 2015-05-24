@@ -6,7 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Optimization;
-namespace CampGoodtimesSpa
+namespace CampGoodtimesSpa.Models
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -17,6 +17,8 @@ namespace CampGoodtimesSpa
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ServiceConfig.RegisterServices(GlobalConfiguration.Configuration);
+
         }
+        
     }
 }

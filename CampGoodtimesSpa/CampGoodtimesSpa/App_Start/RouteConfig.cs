@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace CampGoodtimesSpa
+namespace CampGoodtimesSpa.Models
 {
     public class RouteConfig
     {

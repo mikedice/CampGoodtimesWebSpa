@@ -7,87 +7,141 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using CampGoodtimesSpa.Services;
-using CampGoodtimesSpa.Models.Sharepoint.Feeds;
-namespace CampGoodtimesSpa.Controllers
+using CampGoodtimesSpa.Models.Services;
+using CampGoodtimesSpa.Models.Camp;
+
+namespace CampGoodtimesSpa.Models.Controllers
 {
-    public class DataController : ApiController
+    public class DataController : BaseController
     {
-        ISharepointService sharepointService;
+        private ICampData campData;
 
-        public DataController(ISharepointService sharepointService)
+        public DataController(ICampData campData, ISignInService signInService)
+            : base(signInService)
         {
-            this.sharepointService = sharepointService;
+            this.campData = campData;
         }
 
         [HttpGet]
-        public Task<IEnumerable<NewsFromTheDirectorElement>> NewsItems()
+        public Task<IEnumerable<Person>> Employee()
         {
-            string url = ConfigurationManager.AppSettings["CampDirectorNewsItemsRssFeed"];
-            return sharepointService.GetDirectorNewsFeedAsync(url);
+            return campData.GetPeopleAsync(PersonType.Employee);
         }
 
         [HttpGet]
-        public Task<IEnumerable<SponsorsFeedElement>> Sponsors()
+        public Task<IEnumerable<Person>> Sponsors()
         {
-            string url = ConfigurationManager.AppSettings["WebsiteSponsors"];
-            return sharepointService.GetSponsorsAsync(url);
+            return campData.GetPeopleAsync(PersonType.Sponsor);
         }
 
         [HttpGet]
-        public Task<IEnumerable<Employee>> Staff()
+        public Task<IEnumerable<Person>> Staff()
         {
-            string url = ConfigurationManager.AppSettings["StaffFeed"];
-            return sharepointService.GetStaffAsync(url);
+            return campData.GetPeopleAsync(PersonType.Staff);
         }
 
         [HttpGet]
-        public Task<IEnumerable<Employee>> Board()
+        public Task<IEnumerable<Person>> Board()
         {
-            string url = ConfigurationManager.AppSettings["BoardFeed"];
-            return sharepointService.GetBoardAsync(url);
+            return campData.GetPeopleAsync(PersonType.Board);
         }
 
         [HttpGet]
-        public Task<IEnumerable<Volunteer>> Volunteers()
+        public Task<IEnumerable<Person>> Volunteers()
         {
-            string url = ConfigurationManager.AppSettings["VolunteerFeed"];
-            return sharepointService.GetVolunteersAsync(url);
+            return campData.GetPeopleAsync(PersonType.Volunteer);
         }
 
         [HttpGet]
-        public Task<IEnumerable<CampsElement>> Camps()
+        public Task<IEnumerable<Article>> NewsItems()
         {
-            string url = ConfigurationManager.AppSettings["CampsFeed"];
-            return sharepointService.GetCampsAsync(url);
+            return campData.GetArticlesAsync(ArticleType.NewsFromTheDirector);
         }
 
         [HttpGet]
-        public Task<IEnumerable<EventsElement>> Events()
+        public Task<IEnumerable<Article>> Camps()
         {
-            string url = ConfigurationManager.AppSettings["EventsFeed"];
-            return sharepointService.GetEventsAsync(url);
+            return campData.GetArticlesAsync(ArticleType.Camps);
         }
 
-        //// GET api/api/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [HttpGet]
+        public Task<IEnumerable<Article>> Events()
+        {
+            return campData.GetArticlesAsync(ArticleType.Events);
+        }
 
-        //// POST api/api
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        [HttpPost]
+        public async Task<bool> PostArticle(Article article)
+        {
+            var userName = await GetValidUserAsync();
+            return await campData.UpsertArticleAsync(article, userName);
+        }
 
-        //// PUT api/api/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
+        [HttpPut]
+        public async Task<bool> PutArticle(Article article)
+        {
+            var userName = await GetValidUserAsync();
+            return await campData.UpsertArticleAsync(article, userName);
+        }
 
-        //// DELETE api/api/5
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpDelete]
+        public async Task<bool> DeleteArticle(int id)
+        {
+            var userName = await GetValidUserAsync();
+            return await campData.DeleteArticleAsync(id, userName);
+        }
+
+        [HttpPost]
+        public async Task<bool> PostPerson(Person person)
+        {
+            var userName = await GetValidUserAsync();
+            return await campData.UpsertPersonAsync(person, userName);
+        }
+
+        [HttpPut]
+        public async Task<bool> PutPerson(Person person)
+        {
+            var userName = await GetValidUserAsync();
+            return await campData.UpsertPersonAsync(person, userName);
+        }
+
+        [HttpDelete]
+        public async Task<bool> DeletePerson(int id)
+        {
+            var userName = await GetValidUserAsync();
+            return await campData.DeletePersonAsync(id, userName);
+        }
+
+        [HttpPost]
+        public async Task<bool> PostDonor(Donor donor)
+        {
+            var userName = await GetValidUserAsync();
+            return await campData.UpsertDonorAsync(donor, userName);
+        }
+
+        [HttpPut]
+        public async Task<bool> PutDonor(Donor donor)
+        {
+            var userName = await GetValidUserAsync();
+            return await campData.UpsertDonorAsync(donor, userName);
+        }
+
+        [HttpDelete]
+        public async Task<bool> DeleteDonor(int id)
+        {
+            var userName = await GetValidUserAsync();
+            return await campData.DeleteDonorAsync(id, userName);
+        }
+
+        private async Task<string> GetValidUserAsync()
+        {
+            var userName = await GetSignedInUserAsync();
+            if (string.IsNullOrEmpty(userName))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            return userName;
+        }
+
     }
 }

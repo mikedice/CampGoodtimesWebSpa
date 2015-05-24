@@ -1,0 +1,30 @@
+﻿
+<div ng-if="!knownSignInState">
+    <h4>Loading admin tools</h4>
+    <img src="/Content/images/layout/goodtimes-loading.gif" />
+</div>
+<div ng-if="knownSignInState">
+    <div ng-if="isSignedIn">
+        <form novalidate class="css-form">
+            <div class="form-group">
+                <label for="sign-out-button">You are signed in as: {{userName}}</label><p></p>
+                <button type="submit" id="sign-out-button" class="btn btn-default" ng-click="signOut()">sign out</button>
+            </div>
+        </form>
+    </div>
+    <div ng-if="!isSignedIn">
+        <h4>Please sign in</h4>
+        <form novalidate class="css-form" style="width:300px;">
+            <div class="form-group">
+                <label for="user-name">User name</label>
+                <input type='text' class="form-control" id='user-name' ng-model="user.name" placeholder='enter user name'>
+            </div>
+            <div class="form-group">
+                <label for="user-password">Password</label>
+                <input type="password" class="form-control" id="user-password" ng-model="user.password" placeholder='enter password' required />
+            </div>
+
+            <button type="submit" class="btn btn-default" ng-click="signIn(user)">sign in</button>
+        </form>
+    </div>
+</div>

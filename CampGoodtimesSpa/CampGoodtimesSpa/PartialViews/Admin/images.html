@@ -1,0 +1,25 @@
+﻿<h1>Images</h1>
+<div ng-controller="fileManagerController">
+
+    <form id="image-upload-form">
+        <div class="form-group">
+            <label for="file-input">Select new files to add</label>
+            <input type="file" id="images-file-input" ng-file-select="onFileSelect($files)" multiple>
+            <p class="help-block">{{helpText}}</p>
+            <ul id='image-upload-results' ng-repeat="message in uploadResultMessages">
+                <li>{{message.filename}} {{message.result}}</li>
+            </ul> 
+        </div>
+    </form>
+    <div id="site-image-list" ng-repeat="imageEntry in imageEntries">
+    <div class="row">
+        <hr />
+        <div class="col-md-4">
+            <h4>{{imageEntry}}</h4>
+            <button class="btn" ng-click="deleteImage(imageEntry)">Delete</button>
+        </div>
+        <div class="col-md-8"><img id="image-admin-image" ng-src='{{imageEntry}}' /></div>
+        <hr />
+    </div>
+
+</div>

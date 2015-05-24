@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Routing;
 
-namespace CampGoodtimesSpa
+namespace CampGoodtimesSpa.Models
 {
     public static class WebApiConfig
     {
@@ -18,7 +18,7 @@ namespace CampGoodtimesSpa
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            //config.EnableSystemDiagnosticsTracing();
+            //config.Formatters.Add(new ImageFormatter());
         }
     }
 }

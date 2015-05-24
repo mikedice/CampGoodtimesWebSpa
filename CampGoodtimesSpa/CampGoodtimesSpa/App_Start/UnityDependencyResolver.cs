@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.Practices.Unity;
-using CampGoodtimesSpa.Services;
+using CampGoodtimesSpa.Models.Services;
 using System.Web.Http.Dependencies;
 
-namespace CampGoodtimesSpa
+namespace CampGoodtimesSpa.Models
 {
     class UnityDependencyResolver : IDependencyResolver
     {

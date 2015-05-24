@@ -11,9 +11,9 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CampGoodtimesSpa</RootNamespace>
+    <RootNamespace>CampGoodtimesSpa.Models</RootNamespace>
     <AssemblyName>CampGoodtimesSpa</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -33,6 +33,18 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="Goodtimes Database" Order="1" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbFullSql" Enabled="True">
+            <PreSource Path="" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\Goodtimes Database_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,6 +53,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">
@@ -65,6 +78,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -123,25 +137,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ImageFormatter.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\ServiceConfig.cs" />
     <Compile Include="App_Start\UnityDependencyResolver.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Sharepoint\Feeds\CampsElement.cs" />
-    <Compile Include="Models\Sharepoint\Feeds\Employee.cs" />
-    <Compile Include="Models\Sharepoint\Feeds\EventsElement.cs" />
-    <Compile Include="Models\Sharepoint\Feeds\NewsFromTheDirectorElement.cs" />
-    <Compile Include="Models\Sharepoint\Feeds\SponsorsFeedElement.cs" />
-    <Compile Include="Models\Sharepoint\Feeds\Volunteer.cs" />
+    <Compile Include="Models\Auth\SignInInfo.cs" />
+    <Compile Include="Models\Camp\Article.cs" />
+    <Compile Include="Models\Camp\ArticleType.cs" />
+    <Compile Include="Models\Camp\Donor.cs" />
+    <Compile Include="Models\Camp\Person.cs" />
+    <Compile Include="Models\Camp\PersonType.cs" />
+    <Compile Include="Models\Camp\User.cs" />
+    <Compile Include="Models\Images\FolderItem.cs" />
+    <Compile Include="Models\Images\Folder.cs" />
+    <Compile Include="Models\Images\ImageUploadItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ISharepointService.cs" />
-    <Compile Include="Services\SharepointService.cs" />
+    <Compile Include="Services\DatabaseService.cs" />
+    <Compile Include="Services\ICampData.cs" />
+    <Compile Include="Services\IUserData.cs" />
+    <Compile Include="Services\ISignInService.cs" />
+    <Compile Include="Services\SignInService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin.html" />
+    <Content Include="Content\CSS\admin.css" />
     <Content Include="Content\CSS\Angular.css">
       <DependentUpon>angular.less</DependentUpon>
     </Content>
@@ -181,6 +208,13 @@
     <Content Include="Content\images\layout\transparentBackground.png" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="PartialViews\Admin\adminLandingPage.html" />
+    <Content Include="PartialViews\Admin\adminNavigationControls.html" />
+    <Content Include="PartialViews\Admin\camps.html" />
+    <Content Include="PartialViews\Admin\images.html" />
+    <Content Include="PartialViews\Admin\news.html" />
+    <Content Include="PartialViews\Admin\newsedit.html" />
+    <Content Include="PartialViews\Admin\signInControls.html" />
     <Content Include="PartialViews\Connect.html" />
     <Content Include="PartialViews\Donate\DonateNavBar.html" />
     <Content Include="PartialViews\Donate\InKind.html" />
@@ -204,7 +238,9 @@
     <Content Include="PartialViews\Who\Staff.html" />
     <Content Include="PartialViews\Who\Volunteers.html" />
     <Content Include="PartialViews\Who\WhoNavBar.html" />
+    <Content Include="Scripts\adminApp.js" />
     <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-file-upload.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular.js" />
@@ -222,6 +258,7 @@
     <Content Include="Scripts\Factories\SponsorsFactory.js" />
     <Content Include="Scripts\Factories\WhatFactory.js" />
     <Content Include="Scripts\Factories\WhoFactory.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -232,6 +269,79 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\donors.json.txt" />
+    <Content Include="Content\CSS\admin.less" />
+    <Content Include="Content\CSS\bootstrap\.csscomb.json" />
+    <Content Include="Content\CSS\bootstrap\.csslintrc" />
+    <Content Include="Content\CSS\bootstrap\alerts.less" />
+    <Content Include="Content\CSS\bootstrap\badges.less" />
+    <Content Include="Content\CSS\bootstrap\bootstrap.less" />
+    <Content Include="Content\CSS\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\CSS\bootstrap\button-groups.less" />
+    <Content Include="Content\CSS\bootstrap\buttons.less" />
+    <Content Include="Content\CSS\bootstrap\carousel.less" />
+    <Content Include="Content\CSS\bootstrap\close.less" />
+    <Content Include="Content\CSS\bootstrap\code.less" />
+    <Content Include="Content\CSS\bootstrap\component-animations.less" />
+    <Content Include="Content\CSS\bootstrap\dropdowns.less" />
+    <Content Include="Content\CSS\bootstrap\forms.less" />
+    <Content Include="Content\CSS\bootstrap\glyphicons.less" />
+    <Content Include="Content\CSS\bootstrap\grid.less" />
+    <Content Include="Content\CSS\bootstrap\input-groups.less" />
+    <Content Include="Content\CSS\bootstrap\jumbotron.less" />
+    <Content Include="Content\CSS\bootstrap\labels.less" />
+    <Content Include="Content\CSS\bootstrap\list-group.less" />
+    <Content Include="Content\CSS\bootstrap\media.less" />
+    <Content Include="Content\CSS\bootstrap\mixins.less" />
+    <Content Include="Content\CSS\bootstrap\modals.less" />
+    <Content Include="Content\CSS\bootstrap\navbar.less" />
+    <Content Include="Content\CSS\bootstrap\navs.less" />
+    <Content Include="Content\CSS\bootstrap\normalize.less" />
+    <Content Include="Content\CSS\bootstrap\pager.less" />
+    <Content Include="Content\CSS\bootstrap\pagination.less" />
+    <Content Include="Content\CSS\bootstrap\panels.less" />
+    <Content Include="Content\CSS\bootstrap\popovers.less" />
+    <Content Include="Content\CSS\bootstrap\print.less" />
+    <Content Include="Content\CSS\bootstrap\progress-bars.less" />
+    <Content Include="Content\CSS\bootstrap\responsive-embed.less" />
+    <Content Include="Content\CSS\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\CSS\bootstrap\scaffolding.less" />
+    <Content Include="Content\CSS\bootstrap\tables.less" />
+    <Content Include="Content\CSS\bootstrap\theme.less" />
+    <Content Include="Content\CSS\bootstrap\thumbnails.less" />
+    <Content Include="Content\CSS\bootstrap\tooltip.less" />
+    <Content Include="Content\CSS\bootstrap\type.less" />
+    <Content Include="Content\CSS\bootstrap\utilities.less" />
+    <Content Include="Content\CSS\bootstrap\variables.less" />
+    <Content Include="Content\CSS\bootstrap\wells.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\forms.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\grid.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\image.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\labels.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\panels.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\resize.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\size.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\CSS\bootstrap\mixins\vendor-prefixes.less" />
     <None Include="Properties\PublishProfiles\CampGoodtimesSeattle.pubxml" />
   </ItemGroup>
   <ItemGroup>
@@ -296,7 +406,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63191</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63191/</IISUrl>
+          <IISUrl>http://campgootimesseattle.org</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
