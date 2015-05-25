@@ -53,6 +53,12 @@ namespace CampGoodtimesSpa.Models.Controllers
         }
 
         [HttpGet]
+        public Task<Person> GetPerson(int id)
+        {
+            return campData.GetPersonAsync(id);
+        }
+
+        [HttpGet]
         public Task<IEnumerable<Article>> NewsItems()
         {
             return campData.GetArticlesAsync(ArticleType.NewsFromTheDirector);

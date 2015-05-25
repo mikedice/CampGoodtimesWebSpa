@@ -214,6 +214,8 @@
     <Content Include="PartialViews\Admin\images.html" />
     <Content Include="PartialViews\Admin\articles.html" />
     <Content Include="PartialViews\Admin\articleEdit.html" />
+    <Content Include="PartialViews\Admin\people.html" />
+    <Content Include="PartialViews\Admin\peopleEdit.html" />
     <Content Include="PartialViews\Admin\signInControls.html" />
     <Content Include="PartialViews\Connect.html" />
     <Content Include="PartialViews\Donate\DonateNavBar.html" />
@@ -244,6 +246,8 @@
     <Content Include="Scripts\Admin\articleEditController.js" />
     <Content Include="Scripts\Admin\articleViewController.js" />
     <Content Include="Scripts\Admin\fileManagerController.js" />
+    <Content Include="Scripts\Admin\peopleEditController.js" />
+    <Content Include="Scripts\Admin\peopleViewController.js" />
     <Content Include="Scripts\Admin\signInDirective.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-file-upload.js" />

@@ -1,0 +1,28 @@
+﻿<div class='container' id="article-list-container" ng-controller="peopleViewController">
+    <button class="btn btn-default" ng-click="addNewPerson()">add new</button>
+    <div ng-repeat="(key,value) in people">
+
+        <h2>{{value.Title}}</h2>
+        <div ng-if="value.Data.length==0">
+            <hr />
+            <h4>No people of type {{value.Title}} in the database</h4>
+        </div>
+        <div class="person-summary" novalidate ng-repeat="person in value.Data">
+            <hr />
+            <table class="person-summary-table">
+                <tbody>
+                    <tr><td>Name:</td><td>{{person.Name}}</td></tr>
+                    <tr><td>Title:</td><td>{{person.Title}}</td></tr>
+                    <tr><td>Created By:</td><td>{{person.CreatedBy}}</td></tr>
+                    <tr><td>Created On:</td><td>{{person.CreatedOn}}</td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <button class="btn btn-default" ng-click="editPerson(person.Id)">edit</button>
+                            <button class="btn btn-default" ng-click="deletePerson(person.Id, person.Name)">delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

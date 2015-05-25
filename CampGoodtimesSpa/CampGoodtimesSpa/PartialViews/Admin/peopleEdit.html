@@ -1,0 +1,50 @@
+﻿<div class="container" ng-controller="peopleEditController">
+    <form name='editNewForm' novalidate>
+        <button type="submit" class="btn btn-default" ng-click="submitPerson(person)">submit</button>
+        <button type="submit" class="btn btn-default" ng-click="cancelEdit()">cancel</button>
+        <button type="submit" class="btn btn-default" ng-click="editDone()">done</button>
+        <p class="form-control-static">{{status}}</p>
+        <div class="form-group" ng-if="person.Id">
+            <label for="person-id">Person Id</label>
+            <input type='text' readonly class="form-control" id='person-id' ng-model="person.Id">
+        </div>
+        <div class="form-group">
+            <label for="person-type-picker">Person type</label>
+            <select class="form-control" id="person-type-picker" ng-model="person.PersonType">
+                <option value=""></option>
+                <option value="Employee">Employee</option>
+                <option value="Staff">Staff</option>
+                <option value="Volunteer">Volunteer</option>
+                <option value="Board">Board</option>
+                <option value="Sponsor">Sponsor</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="person-name">Name</label>
+            <input type='text' class="form-control" id='person-name' ng-model="person.Name" placeholder='Name of the person'>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="person.VisibleOnWebsite" required />Make visible on site
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="person-title">Title</label>
+            <input type='text' class="form-control" id='person-title' ng-model="person.Title" placeholder='title, if the preson has one'>
+        </div>
+        <div class="form-group">
+            <label for="person-order">Order</label>
+            <input type="text" class="form-control" id="person-order" ng-model="person.Order" placeholder='The order (starting at 0) this person should appear on the site' />
+        </div>
+        <div class="form-group">
+            <label for="person-smallimage">Small Image</label>
+            <input type="text" class="form-control" id="person-smallimage" ng-model="person.ImageSmall" placeholder='enter site path to small image' ng-model-options="{ debounce: 1000 }" />
+            <img ng-if="person.ImageSmall" ng-src="{{person.ImageSmall}}" />
+        </div>
+        <div class="form-group">
+            <label for="person-largeimage">Large Image</label>
+            <input type="text" class="form-control" id="person-largeimage" ng-model="person.ImageLarge" placeholder='enter site path to large image' ng-model-options="{ debounce: 1000 }" />
+            <img ng-if="person.ImageLarge" ng-src="{{person.ImageLarge}}" />
+        </div>
+    </form>
+</div>

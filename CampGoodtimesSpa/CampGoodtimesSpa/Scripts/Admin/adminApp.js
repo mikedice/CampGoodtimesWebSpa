@@ -7,6 +7,8 @@ window.goodtimes.adminApp.config(function ($routeProvider) {
         .when('/images', { templateUrl: '/PartialViews/Admin/images.html' })
         .when('/articles', { templateUrl: '/PartialViews/Admin/articles.html' })
         .when('/articles/edit/:articleId?', { templateUrl: '/PartialViews/Admin/articleEdit.html' })
+        .when('/people', { templateUrl: '/PartialViews/Admin/people.html' })
+        .when('/people/edit/:personId?', { templateUrl: 'PartialViews/Admin/peopleEdit.html' })
         .when('/camps', { templateUrl: 'PartialViews/Admin/camps.html' })
         .otherwise({ redirectTo: '/' });
 });

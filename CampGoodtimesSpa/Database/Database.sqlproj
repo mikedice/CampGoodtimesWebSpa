@@ -82,6 +82,7 @@
     <Build Include="Stored Procedures\UpsertArticle.sql" />
     <Build Include="Stored Procedures\DeleteArticle.sql" />
     <Build Include="Stored Procedures\GetArticle.sql" />
+    <Build Include="Stored Procedures\GetPerson.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment.sql" />

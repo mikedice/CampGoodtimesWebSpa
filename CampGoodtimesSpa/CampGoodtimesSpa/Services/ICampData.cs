@@ -9,6 +9,7 @@ namespace CampGoodtimesSpa.Models.Services
 {
     public interface ICampData
     {
+        Task<Person> GetPersonAsync(int id);
         Task<IEnumerable<Person>> GetPeopleAsync(PersonType type);
         Task<bool> DeletePersonAsync(int id, string byUserName);
         Task<bool> UpsertPersonAsync(Person person, string byUserName);

@@ -59,6 +59,45 @@ namespace CampGoodtimesSpa.Models.Services
             return result;
         }
 
+        public async Task<Person> GetPersonAsync(int id)
+        {
+            Person result = null;
+            using (var connection = new SqlConnection(this.connectionString))
+            {
+                await connection.OpenAsync();
+                using (var cmd = new SqlCommand("[gt].[GetPerson]", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    var param = new SqlParameter("@id", id);
+                    cmd.Parameters.Add(param);
+
+                    var reader = await cmd.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
+                    {
+                        var el = new Person();
+                        el.Id = ReadDataInt32(reader, 0);
+                        el.PersonType = ReadDataString(reader, 1);
+                        el.CreatedOn = ReadDataDateTime(reader, 2);
+                        el.CreatedBy = ReadDataString(reader, 3);
+                        el.ModifiedOn = ReadDataDateTime(reader, 4);
+                        el.ModifiedBy = ReadDataString(reader, 5);
+                        el.DeletedOn = ReadDataDateTime(reader, 6);
+                        el.DeletedBy = ReadDataString(reader, 7);
+                        el.Name = ReadDataString(reader, 8);
+                        el.VisibleOnWebsite = ReadDataBool(reader, 9);
+                        el.ImageSmall = ReadDataString(reader, 10);
+                        el.ImageLarge = ReadDataString(reader, 11);
+                        el.Title = ReadDataString(reader, 12);
+                        el.Order = ReadDataInt32(reader, 13);
+                        result = el;
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
+
         public async Task<bool> DeletePersonAsync(int id, string byUserName)
         {
             bool result = false;
