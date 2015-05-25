@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [gt].[UpsertArticle]
     @userName nvarchar(128),
+    @author nvarchar(128),
     @articleId int = null,
     @articleType int = null,
     @title nvarchar(128) = null,
@@ -25,6 +26,7 @@ AS
             set
                 gt.Article.ModifiedBy = @user,
                 gt.Article.ModifiedOn = GETDATE(),
+                gt.Article.Author = @author,
                 gt.Article.ArticleType = @articleType,
                 gt.Article.Title = @title,
                 gt.Article.ShortDescription = @shortDescription,
@@ -41,6 +43,7 @@ AS
     if @articleId is null
     begin
         insert into gt.Article (
+            Author,
             CreatedOn,
             CreatedBy,
             ArticleType,
@@ -54,6 +57,7 @@ AS
             ShowOnWebsite,
             [Order])
         VALUES (
+        @author,
         GETDATE(),
         @user,
         @articleType,

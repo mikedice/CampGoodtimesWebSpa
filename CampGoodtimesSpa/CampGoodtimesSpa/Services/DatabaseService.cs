@@ -129,6 +129,48 @@ namespace CampGoodtimesSpa.Models.Services
             return result;
         }
 
+        public async Task<Article> GetArticleAsync(int id)
+        {
+            Article result = null;
+            using (var connection = new SqlConnection(this.connectionString))
+            {
+                await connection.OpenAsync();
+                using (var cmd = new SqlCommand("[gt].[GetArticle]", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    var param = new SqlParameter("@id", id);
+                    cmd.Parameters.Add(param);
+
+                    var reader = await cmd.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
+                    {
+                        var el = new Article();
+                        el.Id = ReadDataInt32(reader, 0);
+                        el.ArticleType = ReadDataString(reader, 1);
+                        el.Author = ReadDataString(reader, 2);
+                        el.CreatedOn = ReadDataDateTime(reader, 3);
+                        el.CreatedBy = ReadDataString(reader, 4);
+                        el.ModifiedOn = ReadDataDateTime(reader, 5);
+                        el.ModifiedBy = ReadDataString(reader, 6);
+                        el.DeletedOn = ReadDataDateTime(reader, 7);
+                        el.DeletedBy = ReadDataString(reader, 8);
+                        el.Title = ReadDataString(reader, 9);
+                        el.ShortDescription = ReadDataString(reader, 10);
+                        el.Content = ReadDataString(reader, 11);
+                        el.Attendance = ReadDataString(reader, 12);
+                        el.DateString = ReadDataString(reader, 13);
+                        el.ImageSmall = ReadDataString(reader, 14);
+                        el.ImageLarge = ReadDataString(reader, 15);
+                        el.ShowOnWebsite = ReadDataBool(reader, 16);
+                        el.Order = ReadDataInt32(reader, 17);
+                        result = el;
+                        break;
+                    }
+                }
+            }
+            return result;       
+        }
 
         public async Task<IEnumerable<Article>> GetArticlesAsync(ArticleType type)
         {
@@ -149,22 +191,23 @@ namespace CampGoodtimesSpa.Models.Services
                     {
                         var el = new Article();
                         el.Id = ReadDataInt32(reader, 0);
-                        el.ArticleType = ReadDataString(reader, 1); 
-                        el.CreatedOn = ReadDataDateTime(reader, 2);
-                        el.CreatedBy = ReadDataString(reader, 3); 
-                        el.ModifiedOn = ReadDataDateTime(reader, 4);
-                        el.ModifiedBy = ReadDataString(reader, 5);
-                        el.DeletedOn = ReadDataDateTime(reader, 6);
-                        el.DeletedBy = ReadDataString(reader, 7);
-                        el.Title = ReadDataString(reader, 8);
-                        el.ShortDescription = ReadDataString(reader, 9);
-                        el.Content = ReadDataString(reader, 10);
-                        el.Attendance = ReadDataString(reader, 11);
-                        el.DateString = ReadDataString(reader, 12);
-                        el.ImageSmall = ReadDataString(reader, 13);
-                        el.ImageLarge = ReadDataString(reader, 14); 
-                        el.ShowOnWebsite = ReadDataBool(reader, 15);
-                        el.Order = ReadDataInt32(reader, 16);
+                        el.ArticleType = ReadDataString(reader, 1);
+                        el.Author = ReadDataString(reader, 2);
+                        el.CreatedOn = ReadDataDateTime(reader, 3);
+                        el.CreatedBy = ReadDataString(reader, 4); 
+                        el.ModifiedOn = ReadDataDateTime(reader, 5);
+                        el.ModifiedBy = ReadDataString(reader, 6);
+                        el.DeletedOn = ReadDataDateTime(reader, 7);
+                        el.DeletedBy = ReadDataString(reader, 8);
+                        el.Title = ReadDataString(reader, 9);
+                        el.ShortDescription = ReadDataString(reader, 10);
+                        el.Content = ReadDataString(reader, 11);
+                        el.Attendance = ReadDataString(reader, 12);
+                        el.DateString = ReadDataString(reader, 13);
+                        el.ImageSmall = ReadDataString(reader, 14);
+                        el.ImageLarge = ReadDataString(reader, 15); 
+                        el.ShowOnWebsite = ReadDataBool(reader, 16);
+                        el.Order = ReadDataInt32(reader, 17);
                         result.Add(el);
                     }
                 }
@@ -210,6 +253,9 @@ namespace CampGoodtimesSpa.Models.Services
                     cmd.Parameters.Add(param);
                  
                     param = new SqlParameter("@articleId", article.Id);
+                    cmd.Parameters.Add(param);
+
+                    param = new SqlParameter("@author", article.Author);
                     cmd.Parameters.Add(param);
 
                     param = new SqlParameter("@articleType", ConvertArticleType(article.ArticleType));

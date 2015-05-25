@@ -2,6 +2,7 @@
 (
     [Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     ArticleType int not null,
+    Author nvarchar(128),
     CreatedOn DateTime not null,
     CreatedBy int not null,
     ModifiedOn DateTime,

@@ -212,8 +212,8 @@
     <Content Include="PartialViews\Admin\adminNavigationControls.html" />
     <Content Include="PartialViews\Admin\camps.html" />
     <Content Include="PartialViews\Admin\images.html" />
-    <Content Include="PartialViews\Admin\news.html" />
-    <Content Include="PartialViews\Admin\newsedit.html" />
+    <Content Include="PartialViews\Admin\articles.html" />
+    <Content Include="PartialViews\Admin\articleEdit.html" />
     <Content Include="PartialViews\Admin\signInControls.html" />
     <Content Include="PartialViews\Connect.html" />
     <Content Include="PartialViews\Donate\DonateNavBar.html" />
@@ -238,7 +238,13 @@
     <Content Include="PartialViews\Who\Staff.html" />
     <Content Include="PartialViews\Who\Volunteers.html" />
     <Content Include="PartialViews\Who\WhoNavBar.html" />
-    <Content Include="Scripts\adminApp.js" />
+    <Content Include="Scripts\Admin\adminApp.js" />
+    <Content Include="Scripts\Admin\adminNavigationDirective.js" />
+    <Content Include="Scripts\Admin\adminPageController.js" />
+    <Content Include="Scripts\Admin\articleEditController.js" />
+    <Content Include="Scripts\Admin\articleViewController.js" />
+    <Content Include="Scripts\Admin\fileManagerController.js" />
+    <Content Include="Scripts\Admin\signInDirective.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-file-upload.js" />
     <Content Include="Scripts\angular-route.js" />

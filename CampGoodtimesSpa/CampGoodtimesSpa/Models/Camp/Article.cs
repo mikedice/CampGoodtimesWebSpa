@@ -9,6 +9,7 @@ namespace CampGoodtimesSpa.Models.Camp
     {
         public int? Id { get; set; }
         public string ArticleType { get; set; }
+        public string Author { get; set; }
         public DateTime? CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }

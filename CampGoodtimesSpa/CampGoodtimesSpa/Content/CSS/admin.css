@@ -6555,6 +6555,9 @@ button.close {
 #image-admin-image {
   max-width: 100%;
 }
-.article-input-textarea {
-  height: 350px;
+.article-summary-table {
+  margin-bottom: 40px;
+}
+.article-summary-table tr td {
+  padding-right: 10px;
 }

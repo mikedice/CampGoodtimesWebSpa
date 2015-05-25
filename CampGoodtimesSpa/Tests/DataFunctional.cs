@@ -65,6 +65,7 @@ namespace Tests
             var userName = "admin";
             Article ar = new Article
             {
+                Author = "testauthor",
                 ArticleType = ArticleType.NewsFromTheDirector.ToString(),
                 Attendance = "testattendance",
                 Content = "testcontent",
@@ -85,6 +86,7 @@ namespace Tests
 
             var articleResult = articles.FirstOrDefault();
             Assert.IsNotNull(articleResult);
+            Assert.AreEqual(ar.Author, articleResult.Author);
             Assert.AreEqual(ar.ArticleType, articleResult.ArticleType);
             Assert.AreEqual(ar.Content, articleResult.Content);
             Assert.AreEqual(ar.DateString, articleResult.DateString);

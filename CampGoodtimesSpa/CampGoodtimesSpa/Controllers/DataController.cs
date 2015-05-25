@@ -70,6 +70,12 @@ namespace CampGoodtimesSpa.Models.Controllers
             return campData.GetArticlesAsync(ArticleType.Events);
         }
 
+        [HttpGet]
+        public Task<Article> GetArticle(int id)
+        {
+            return campData.GetArticleAsync(id);
+        }
+
         [HttpPost]
         public async Task<bool> PostArticle(Article article)
         {

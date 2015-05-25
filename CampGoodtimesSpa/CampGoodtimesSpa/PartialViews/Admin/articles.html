@@ -1,0 +1,71 @@
+﻿<div class='container' id="article-list-container" ng-controller="articleViewController">
+    <button class="btn btn-default" ng-click="addNew()">add new</button>
+    <h2>News Articles</h2>
+    <div ng-if="newsArticles.length==0">
+        <hr />
+        <h4>No News articles in the database</h4>
+    </div>
+    <div class="article-summary" name='editNewForm' novalidate ng-repeat="news in newsArticles">
+        <hr />
+        <table class="article-summary-table">
+            <tbody>
+                <tr><td>Title:</td><td>{{news.Title}}</td></tr>
+                <tr><td>Author:</td><td>{{news.Author}}</td></tr>
+                <tr><td>Created By:</td><td>{{news.CreatedBy}}</td></tr>
+                <tr><td>Created On:</td><td>{{news.CreatedOn}}</td></tr>
+                <tr>
+                    <td colspan="2">
+                        <button class="btn btn-default" ng-click="editArticle(news.Id, news.Title)">edit</button>
+                        <button class="btn btn-default" ng-click="deleteArticle(news.Id, news.Title)">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Camps</h2>
+    <div ng-if="campsArticles.length==0">
+        <hr />
+        <h4>No Camps articles in the database</h4>
+    </div>
+    <div class="article-summary" name='editNewForm' novalidate ng-repeat="news in campsArticles">
+        <hr />
+        <table class ="article-summary-table">
+            <tbody>
+                <tr><td>Title:</td><td>{{news.Title}}</td></tr>
+                <tr><td>Author:</td><td>{{news.Author}}</td></tr>
+                <tr><td>Created By:</td><td>{{news.CreatedBy}}</td></tr>
+                <tr><td>Created On:</td><td>{{news.CreatedOn}}</td></tr>
+                <tr>
+                    <td colspan="2">
+                        <button class="btn btn-default" ng-click="editArticle(news.Id, news.Title)">edit</button>
+                        <button class="btn btn-default" ng-click="deleteArticle(news.Id, news.Title)">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Events</h2>
+    <div ng-if="eventsArticles.length==0">
+        <hr />
+        <h4>No Events articles in the database</h4>
+    </div>
+    <div class="article-summary" name='editNewForm' novalidate ng-repeat="news in eventsArticles">
+        <hr />
+        <table class="article-summary-table">
+            <tbody>
+                <tr><td>Title:</td><td>{{news.Title}}</td></tr>
+                <tr><td>Author:</td><td>{{news.Author}}</td></tr>
+                <tr><td>Created By:</td><td>{{news.CreatedBy}}</td></tr>
+                <tr><td>Created On:</td><td>{{news.CreatedOn}}</td></tr>
+                <tr>
+                    <td colspan="2">
+                        <button class="btn btn-default" ng-click="editArticle(news.Id, news.Title)">edit</button>
+                        <button class="btn btn-default" ng-click="deleteArticle(news.Id, news.Title)">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

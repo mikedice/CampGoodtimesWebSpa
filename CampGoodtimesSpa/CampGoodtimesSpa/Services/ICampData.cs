@@ -13,6 +13,7 @@ namespace CampGoodtimesSpa.Models.Services
         Task<bool> DeletePersonAsync(int id, string byUserName);
         Task<bool> UpsertPersonAsync(Person person, string byUserName);
 
+        Task<Article> GetArticleAsync(int id);
         Task<IEnumerable<Article>> GetArticlesAsync(ArticleType type);
         Task<bool> DeleteArticleAsync(int id, string byUserName);
         Task<bool> UpsertArticleAsync(Article article, string byUserName);

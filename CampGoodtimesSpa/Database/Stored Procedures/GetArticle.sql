@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [gt].[GetArticles]
-    @articleType int
+﻿CREATE PROCEDURE [gt].[GetArticle]
+    @id int
 AS
     SELECT a.Id,
         at.Name as ArticleType,
@@ -21,6 +21,5 @@ AS
         a.[Order]
  from [gt].[Article] a
     join [gt].[ArticleTypeEnum] at on a.ArticleType = at.Id
-    where a.ArticleType = @articleType and a.DeletedBy is null
-
+    where a.Id=@id and a.DeletedBy is null
 RETURN 0
