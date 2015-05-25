@@ -9,12 +9,12 @@
         </div>
         <div class="person-summary" novalidate ng-repeat="person in value.Data">
             <hr />
-            <table class="person-summary-table">
+            <table class="content-summary-table">
                 <tbody>
-                    <tr><td>Name:</td><td>{{person.Name}}</td></tr>
-                    <tr><td>Title:</td><td>{{person.Title}}</td></tr>
-                    <tr><td>Created By:</td><td>{{person.CreatedBy}}</td></tr>
-                    <tr><td>Created On:</td><td>{{person.CreatedOn}}</td></tr>
+                    <tr><td><b>Name:</b></td><td>{{person.Name}}</td></tr>
+                    <tr><td><b>Title:</b></td><td>{{person.Title}}</td></tr>
+                    <tr><td><b>Created By:</b></td><td>{{person.CreatedBy}}</td></tr>
+                    <tr><td><b>Created On:</b></td><td>{{person.CreatedOn}}</td></tr>
                     <tr>
                         <td colspan="2">
                             <button class="btn btn-default" ng-click="editPerson(person.Id)">edit</button>

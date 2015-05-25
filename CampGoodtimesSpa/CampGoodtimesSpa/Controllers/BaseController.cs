@@ -54,5 +54,37 @@ namespace CampGoodtimesSpa.Models.Controllers
                 return null;
             }
         }
+
+        protected static string TrimName(string name)
+        {
+            var result = name.Trim();
+            result = name.Replace("\"", string.Empty);
+            return result;
+        }
+
+        protected string GetSubdirName(string fileSystemDir)
+        {
+            string[] elems = fileSystemDir.Split(new char[] { '\\' });
+            return elems.Last();
+        }
+
+        protected string MakeWebDir(string fileSystemDir, string rootPath)
+        {
+            var trimmed = fileSystemDir.Substring(rootPath.Length);
+            var result = trimmed.Replace('\\', '/');
+            return result;
+        }
+
+        protected string MakeFileSystemPath(string subDir)
+        {
+            return subDir.Replace('/', '\\');
+        }
+
+        protected string GetServerRootPath()
+        {
+            var context = (System.Web.HttpContextWrapper)this.Request.Properties["MS_HttpContext"];
+            var variable = context.Request.ServerVariables["APPL_PHYSICAL_PATH"];
+            return variable;
+        }
     }
 }

@@ -18,8 +18,20 @@
     }
 
     $scope.submitArticle = function (article) {
-        if (article.id != null) {
+        if (article.Id != null) {
             // this is an edit so do a put
+            $http({
+                url: '/api/data/putarticle',
+                method: 'PUT',
+                data: article
+            })
+            .success(function (data, status, headers, config) {
+                $scope.status = status;
+                $location.path('/articles');
+            })
+            .error(function (data, status, headers, config) {
+                $scope.status = 'An error occurred (status code: ' + status + ')';
+            });
         }
         else {
             // post
@@ -28,13 +40,13 @@
                 method: 'POST',
                 data: article
             })
-                .success(function (data, status, headers, config) {
-                    $scope.status = status;
-                    $location.path('/articles');
-                })
-                .error(function (data, status, headers, config) {
-                    $scope.status = status;
-                });
+            .success(function (data, status, headers, config) {
+                $scope.status = status;
+                $location.path('/articles');
+            })
+            .error(function (data, status, headers, config) {
+                $scope.status = 'An error occurred (status code: ' + status + ')';
+            });
         }
 
     }

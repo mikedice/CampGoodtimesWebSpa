@@ -12,11 +12,11 @@
                 $route.reload();
             })
             .error(function (data, status, headers, config) {
-                window.alert("error " + status + " deleting article");
+                window.alert("error " + status + " deleting person");
             });
         }
-
     }
+
     $scope.addNewPerson = function () { $location.path('/people/edit'); }
 
     var reset = function () {

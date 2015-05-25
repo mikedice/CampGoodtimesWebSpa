@@ -1,0 +1,24 @@
+﻿<div class="container-fluid" ng-controller="donorEditController">
+    <form name='editNewForm' novalidate>
+        <button type="submit" class="btn btn-default" ng-click="submitDonor(donor)">save</button>
+        <button type="submit" class="btn btn-default" ng-click="cancelEdit()">cancel</button>
+        <button type="submit" class="btn btn-default" ng-click="editDone()">done</button>
+        <p class="form-control-static">{{status}}</p>
+        <div class="form-group" ng-if="donor.Id">
+            <label for="donor-id">Donor Id</label>
+            <input type='text' readonly class="form-control" id='donor-id' ng-model="donor.Id">
+        </div>
+        <div class="form-group">
+            <label for="donor-giver">Giver</label>
+            <input type='text' class="form-control" id='donor-giver' ng-model="donor.Giver" placeholder='Name of giver'>
+        </div>
+        <div class="form-group">
+            <label for="donor-inhonorof">In Honor Of</label>
+            <input type='text' class="form-control" id='donor-inhonorof' ng-model="donor.InHonorOf" placeholder='gift in honor of'>
+        </div>
+        <div class="form-group">
+            <label for="donor-donationdate">Donation Date</label>
+            <input type="text" class="form-control" id="person-donationdate" ng-model="donor.DonationDate" placeholder='The donation the date' />
+        </div>
+    </form>
+</div>

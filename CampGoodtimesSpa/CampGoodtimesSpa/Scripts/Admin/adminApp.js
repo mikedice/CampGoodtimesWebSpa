@@ -9,6 +9,8 @@ window.goodtimes.adminApp.config(function ($routeProvider) {
         .when('/articles/edit/:articleId?', { templateUrl: '/PartialViews/Admin/articleEdit.html' })
         .when('/people', { templateUrl: '/PartialViews/Admin/people.html' })
         .when('/people/edit/:personId?', { templateUrl: 'PartialViews/Admin/peopleEdit.html' })
+        .when('/donors', { templateUrl: '/PartialViews/Admin/donors.html' })
+        .when('/donors/edit/:donorId?', { templateUrl: 'PartialViews/Admin/donorsEdit.html' })
         .when('/camps', { templateUrl: 'PartialViews/Admin/camps.html' })
         .otherwise({ redirectTo: '/' });
 });

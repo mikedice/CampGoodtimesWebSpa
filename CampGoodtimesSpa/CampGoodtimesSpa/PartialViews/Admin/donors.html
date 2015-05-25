@@ -1,0 +1,48 @@
+﻿<div class='container' id="article-list-container" ng-controller="donorViewController">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-default" ng-click="addNewDonor()">add new</button>
+        </div>
+        <div class="col-md-10">
+            <form id="donors-upload-form">
+                <div class="form-group">
+                    <label for="donors-file-input">Select .csv file to upload</label>
+                    <input type="file" id="donors-file-input" ng-file-select="onFileSelect($files)">
+                    <p class="help-block">Bulk upload donors from a .csv file.
+                    <ul>
+                        <li>Do not upload duplicate donors! Duplicates will not be detected as duplicates.</li>
+                        <li>Fields of CSV are: Donor<b>,</b> Donation Date<b>,</b> In Honor Of</li>
+                        <li>Do not include header fields in the first line of the CSV</li>
+                        <li>There is no 'Undo' for this operation. If the data gets messed up, use the edit/delete buttons to correct it</li>
+                        <li>Any commas inside fields will be mis-interpreted as new fields. No commas allowed in fields. Example: This date will be mis-intepreted due to the embedded comma August 31, 1967</li>
+                    </ul>
+                    </p>
+                    <ul id='donor-upload-results' ng-repeat="message in uploadResultMessages">
+                        <li>{{message.filename}} {{message.result}}</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div ng-if="donors.length==0">
+        <hr />
+        <h4>There are no donors in the database</h4>
+    </div>
+    <div ng-repeat="donor in donors">
+        <hr />
+        <table class="content-summary-table">
+            <tbody>
+                <tr><td><b>Giver:</b></td><td>{{donor.Giver}}</td></tr>
+                <tr><td><b>In Honor Of:</b></td><td>{{donor.InHonorOf}}</td></tr>
+                <tr><td><b>Created By:</b></td><td>{{donor.CreatedBy}}</td></tr>
+                <tr><td><b>Created On:</</b>td><td>{{donor.CreatedOn}}</td></tr>
+                <tr>
+                    <td colspan="2">
+                        <button class="btn btn-default" ng-click="editDonor(donor.Id)">edit</button>
+                        <button class="btn btn-default" ng-click="deleteDonor(donor.Id, donor.Giver)">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

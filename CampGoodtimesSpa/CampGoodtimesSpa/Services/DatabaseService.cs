@@ -365,6 +365,41 @@ namespace CampGoodtimesSpa.Models.Services
             return result;
         }
 
+        public async Task<Donor> GetDonorAsync(int id)
+        {
+            Donor result = null;
+            using (var connection = new SqlConnection(this.connectionString))
+            {
+                await connection.OpenAsync();
+                using (var cmd = new SqlCommand("[gt].[GetDonor]", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    var param = new SqlParameter("@id", id);
+                    cmd.Parameters.Add(param);
+
+                    var reader = await cmd.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
+                    {
+                        var el = new Donor();
+                        el.Id = ReadDataInt32(reader, 0);
+                        el.CreatedOn = ReadDataDateTime(reader, 1);
+                        el.CreatedBy = ReadDataString(reader, 2);
+                        el.ModifiedOn = ReadDataDateTime(reader, 3);
+                        el.ModifiedBy = ReadDataString(reader, 4);
+                        el.DeletedOn = ReadDataDateTime(reader, 5);
+                        el.DeletedBy = ReadDataString(reader, 6);
+                        el.DonationDate = ReadDataDateTime(reader, 7);
+                        el.Giver = ReadDataString(reader, 8);
+                        el.InHonorOf = ReadDataString(reader, 9);
+                        result = el;
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
+
+
         public async Task<bool> DeleteDonorAsync(int id, string byUserName)
         {
             bool result = false;

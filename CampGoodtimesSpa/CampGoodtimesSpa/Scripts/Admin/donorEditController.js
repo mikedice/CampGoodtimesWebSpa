@@ -1,34 +1,34 @@
-﻿window.goodtimes.adminApp.controller('peopleEditController', ['$http', '$scope', '$location', '$routeParams', function ($http, $scope, $location, $routeParams) {
-    $scope.person = {}
+﻿window.goodtimes.adminApp.controller('donorEditController', ['$http', '$scope', '$location', '$routeParams', function ($http, $scope, $location, $routeParams) {
+    $scope.donor = {}
     $scope.status = '';
-    $scope.cancelEdit = function () { $location.path('/people'); }
-    $scope.editDone = function () { $location.path('/people'); }
+    $scope.cancelEdit = function () { $location.path('/donors'); }
+    $scope.editDone = function () { $location.path('/donors'); }
 
     var reset = function () {
-        if ($routeParams.personId != null) {
+        if ($routeParams.donorId != null) {
             $http({
                 method: 'GET',
-                url: '/api/data/getperson/' + $routeParams.personId
+                url: '/api/data/getdonor/' + $routeParams.donorId
             })
              .success(function (data, status, headers, config) {
-                 $scope.person = data;
+                 $scope.donor = data;
              })
              .error(function (data, status, headers, config) {
              });
         }
     }
 
-    $scope.submitPerson = function (person) {
-        if (person.Id != null) {
+    $scope.submitDonor = function (donor) {
+        if (donor.Id != null) {
             // put
             $http({
-                url: '/api/data/putperson',
+                url: '/api/data/putdonor',
                 method: 'PUT',
-                data: person
+                data: donor
             })
             .success(function (data, status, headers, config) {
                 $scope.status = status;
-                $location.path('/people');
+                $location.path('/donors');
             })
             .error(function (data, status, headers, config) {
                 $scope.status = 'An error occurred (status code: ' + status + ')';
@@ -37,13 +37,13 @@
         else {
             // post
             $http({
-                url: '/api/data/postPerson',
+                url: '/api/data/postdonor',
                 method: 'POST',
-                data: person
+                data: donor
             })
             .success(function (data, status, headers, config) {
                 $scope.status = status;
-                $location.path('/people');
+                $location.path('/donors');
             })
             .error(function (data, status, headers, config) {
                 $scope.status = 'An error occurred (status code: ' + status + ')';
