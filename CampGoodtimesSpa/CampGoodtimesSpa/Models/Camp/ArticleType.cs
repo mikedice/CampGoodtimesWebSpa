@@ -6,6 +6,7 @@ namespace CampGoodtimesSpa.Models.Camp
         Unknown = 0,
         Camps = 1,
         NewsFromTheDirector = 2,
-        Events = 3
+        Events = 3,
+        Scholarships = 4
     }
 }

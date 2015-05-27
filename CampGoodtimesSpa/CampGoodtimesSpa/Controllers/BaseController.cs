@@ -9,7 +9,6 @@ using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Web.Http;
 using System.Net.Http;
-using System.Web.Http;
 using CampGoodtimesSpa.Models.Services;
 
 namespace CampGoodtimesSpa.Models.Controllers

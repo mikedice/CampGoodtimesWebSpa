@@ -11,7 +11,8 @@
     @imageSmall nvarchar(512) = null,
     @imageLarge nvarchar(512) = null,
     @showOnWebsite bit = null,
-    @order int = null
+    @order int = null,
+	@moreInformationLink nvarchar(1024) = null
 AS
     declare @user int
     declare @instance int
@@ -36,7 +37,8 @@ AS
                 gt.Article.ImageLarge = @imageLarge,
                 gt.Article.ImageSmall = @imageSmall,
                 gt.Article.ShowOnWebsite = @showOnWebsite,
-                gt.Article.[Order] = @order
+                gt.Article.[Order] = @order,
+				gt.Article.MoreInformationLink = @moreInformationLink
             where gt.Article.Id = @instance
     end
 
@@ -55,7 +57,8 @@ AS
             ImageSmall,
             ImageLarge,
             ShowOnWebsite,
-            [Order])
+            [Order],
+			MoreInformationLink)
         VALUES (
         @author,
         GETDATE(),
@@ -69,6 +72,7 @@ AS
         @imageSmall,
         @imageLarge,
         @showOnWebsite,
-        @order);
+        @order,
+		@moreInformationLink);
     end
 RETURN 0

@@ -21,7 +21,7 @@
             .success(function (data) {
                 scope.newsPageItemsLoaded = true;
                 scope.newsItems = data;
-                if (route.current.params.articleNumber !== null)
+                if (route.current.params.articleNumber != null)
                 {
                     SetCurrentArticle(scope, data, route.current.params.articleNumber);
                 }

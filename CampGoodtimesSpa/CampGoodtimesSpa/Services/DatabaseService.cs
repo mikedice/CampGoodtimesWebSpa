@@ -203,6 +203,7 @@ namespace CampGoodtimesSpa.Models.Services
                         el.ImageLarge = ReadDataString(reader, 15);
                         el.ShowOnWebsite = ReadDataBool(reader, 16);
                         el.Order = ReadDataInt32(reader, 17);
+                        el.MoreInformationLink = ReadDataString(reader, 18);
                         result = el;
                         break;
                     }
@@ -247,9 +248,32 @@ namespace CampGoodtimesSpa.Models.Services
                         el.ImageLarge = ReadDataString(reader, 15); 
                         el.ShowOnWebsite = ReadDataBool(reader, 16);
                         el.Order = ReadDataInt32(reader, 17);
+                        el.MoreInformationLink = ReadDataString(reader, 18);
                         result.Add(el);
                     }
                 }
+            }
+
+            return ComputeArticleNumber(result);
+        }
+
+        private IEnumerable<Article> ComputeArticleNumber(IEnumerable<Article> input)
+        {
+            List<Article> result = new List<Article>();
+            // articles with order numbers are sorted by order and put first in the list
+            // then the remaining articles are sorted by CreatedOn and that makes up the list
+
+            var withOrder = input.Where(a => a.Order.HasValue);
+            var withOrderSorted = withOrder.OrderBy(a => a.Order);
+            result.AddRange(withOrderSorted);
+
+            var withoutOrder = input.Where(a => a.Order.HasValue == false);
+            var withoutOrderSorted = withoutOrder.OrderByDescending(a => a.CreatedOn.Value);
+            result.AddRange(withoutOrderSorted);
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                result[i].ArticleNumber = i;
             }
             return result;
         }
@@ -325,6 +349,9 @@ namespace CampGoodtimesSpa.Models.Services
                     cmd.Parameters.Add(param);
                     
                     param = new SqlParameter("@order", article.Order);
+                    cmd.Parameters.Add(param);
+
+                    param = new SqlParameter("@moreInformationLink", article.MoreInformationLink);
                     cmd.Parameters.Add(param);
 
                     int rows = await cmd.ExecuteNonQueryAsync();

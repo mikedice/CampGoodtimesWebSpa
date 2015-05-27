@@ -9,6 +9,7 @@ namespace CampGoodtimesSpa.Models.Camp
     {
         public int? Id { get; set; }
         public string ArticleType { get; set; }
+        public int? ArticleNumber { get; set; }
         public string Author { get; set; }
         public DateTime? CreatedOn { get; set; }
         public string CreatedBy { get; set; }
@@ -25,5 +26,6 @@ namespace CampGoodtimesSpa.Models.Camp
         public string ImageLarge { get; set; }
         public bool? ShowOnWebsite { get; set; }
         public int? Order { get; set; }
+        public string MoreInformationLink { get; set; }
     }
 }

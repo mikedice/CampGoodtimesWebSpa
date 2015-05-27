@@ -18,6 +18,7 @@
     ImageLarge nvarchar(512),
     ShowOnWebsite bit,
     [Order] int, 
+	MoreInformationLink nvarchar(1024),
     CONSTRAINT [FK_Article_ToArticleTypeEnum] FOREIGN KEY ([ArticleType]) REFERENCES [gt].[ArticleTypeEnum]([Id]),
     CONSTRAINT [FK_ArticleCreatedBy_Users] FOREIGN KEY (CreatedBy) REFERENCES [gt].[Users]([Id]),
     CONSTRAINT [FK_ArticleModifiedBy_Users] FOREIGN KEY (ModifiedBy) REFERENCES [gt].[Users]([Id]),

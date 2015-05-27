@@ -110,6 +110,16 @@ begin
     insert into [gt].[ArticleTypeEnum]([Id],[Name]) values (@type, @name)
 end
 
+set @type = 4
+set @name = 'Scholarships'
+set @value=null;
+select @value = [Id] from [gt].[ArticleTypeEnum] where [gt].[ArticleTypeEnum].[Name] = @name;
+if @value is null
+begin
+    insert into [gt].[ArticleTypeEnum]([Id],[Name]) values (@type, @name)
+end
+
+
 
 
 

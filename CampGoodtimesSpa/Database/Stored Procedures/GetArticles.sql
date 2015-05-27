@@ -18,7 +18,8 @@ AS
         a.ImageSmall,
         a.ImageLarge,
         a.ShowOnWebsite,
-        a.[Order]
+        a.[Order],
+		a.MoreInformationLink
  from [gt].[Article] a
     join [gt].[ArticleTypeEnum] at on a.ArticleType = at.Id
     where a.ArticleType = @articleType and a.DeletedBy is null

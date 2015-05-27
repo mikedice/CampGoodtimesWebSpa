@@ -6,7 +6,7 @@
 
     <div id="news-items-list" ng-repeat="article in newsItems">
         <div class="article-container">
-            <p class="posted-by">Posted by {{article.PostedBy}}</p>
+            <p class="posted-by">Posted by {{article.Author}}</p>
             <h1 class="article-title">{{article.Title}}</h1>
             <p ng-bind-html="article.ShortDescription"></p>
             <a href="" ng-click="readMore(article.ArticleNumber)">Read More</a>
